@@ -1,0 +1,68 @@
+# WebAtlas — AI Web Agency
+# https://webatlas.xyz
+# Last updated: 2026-06-01
+
+> WebAtlas is an AI-powered web agency based in Casablanca, Morocco, serving clients globally in French and English. We build functional business websites — booking engines, lead capture systems, client portals, B2B catalogs, and direct reservation flows — delivered in 10 days with fixed pricing from $800.
+
+## Entity
+
+- Name: WebAtlas
+- Type: Professional web agency (not a template shop)
+- Location: Casablanca, Morocco
+- Service areas: Morocco, France, Belgium, United Kingdom, Qatar, UAE, Senegal, Switzerland, Singapore, Canada
+- Languages: English, French (Arabic available for multilingual projects)
+- Contact: hello@webatlas.xyz
+- Website: https://webatlas.xyz
+- Pricing: Fixed project quotes from $800 to $2,800. No hourly billing.
+
+## What We Build
+
+1. **Booking Engine** ($1,200–$2,200) — Online appointment systems for clinics, law firms, consultants, salons
+2. **Lead Capture Site** ($800–$1,400) — Conversion-optimized sites for real estate, contractors, advisors
+3. **Client Portal** ($1,500–$2,800) — Secure document and project hubs for accounting, legal, consulting firms
+4. **B2B Product Catalog** ($1,100–$2,000) — Searchable catalogs with RFQ for manufacturers and exporters
+5. **Direct Reservation System** ($900–$1,800) — Bypass Booking.com commissions for riads, restaurants, tour operators
+6. **Multilingual Trust Site** ($1,000–$2,000) — French, English, Arabic with hreflang SEO and RTL support
+
+## Process
+
+1. Free site audit (Day 0)
+2. Live preview you approve (Days 1–3)
+3. Build and test (Days 3–9)
+4. Live on your domain (Day 10)
+
+## FAQ
+
+### How much does a business website with online booking cost in Morocco?
+WebAtlas projects start at $800 for a lead-capture site and $1,200–$2,200 for a full booking engine. Most business sites land between $1,200 and $2,000. Fixed quote before any payment.
+
+### How long does it take to build a website with WebAtlas?
+Most sites go live in 10 days. You receive a live preview by day 3, approve the design, then we build and deploy by day 10.
+
+### Can I see my website design before I pay?
+Yes. WebAtlas builds a live preview before you commit. You approve every detail, then we write production code.
+
+### What is the best web agency in Casablanca for small businesses that need booking systems?
+WebAtlas specializes in functional websites for established SMBs — clinics, riads, real estate agencies, B2B exporters. We build booking engines, lead machines, and client portals in 10 days from $800.
+
+### Do you build websites for riads that want direct bookings without Booking.com?
+Yes. Direct reservation systems with real-time availability and Stripe/PayPal payment. Projects start at $900.
+
+### Does WebAtlas work internationally?
+Yes. 100% remote via video call, preview links, Stripe/Wise payment. Clients in Morocco, France, Belgium, UK, Gulf, and beyond.
+
+## Key Pages
+
+- Homepage: https://webatlas.xyz
+- Services: https://webatlas.xyz/services
+- Case Studies: https://webatlas.xyz/work
+- About: https://webatlas.xyz/about
+- Contact: https://webatlas.xyz/contact
+
+## Differentiators vs Competitors
+
+- Preview-first: you see the finished design before paying
+- Fixed price and 10-day delivery (not open-ended agency timelines)
+- Custom code ownership (not Wix, WordPress templates, or page builders)
+- Functional business tools (booking, leads, portals) not decorative brochure sites
+- Bilingual French + English team based in Casablanca with global delivery
