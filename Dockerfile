@@ -13,8 +13,10 @@ COPY . .
 # Build-time env (can be overridden with --build-arg)
 ARG NEXT_PUBLIC_API_URL=https://api.webatlas.xyz
 ARG NEXT_PUBLIC_SITE_URL=https://webatlas.xyz
+ARG NEXT_PUBLIC_SITE_NAME=WebAtlas
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
+ENV NEXT_PUBLIC_SITE_NAME=$NEXT_PUBLIC_SITE_NAME
 
 RUN npm run build
 
@@ -24,6 +26,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser  --system --uid 1001 nextjs
