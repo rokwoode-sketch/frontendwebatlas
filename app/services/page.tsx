@@ -4,9 +4,9 @@ import { ServicesPageJsonLd } from '@/components/JsonLd'
 import { SERVICE_FAQS, SITE } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Services — Booking Engines, Lead Sites & Client Portals',
+  title: 'Services — Custom Web Apps & Business Systems',
   description:
-    'WebAtlas builds booking engines ($1,200+), lead capture sites ($800+), client portals ($1,500+), B2B catalogs, direct reservation systems, and multilingual sites. Delivered in 10 days from Casablanca, serving Morocco, France, and globally.',
+    'WebAtlas builds custom websites and web applications for any business need — booking engines, portals, marketplaces, dashboards, and more. Fixed pricing, delivered in days from Casablanca, serving Morocco and globally.',
   alternates: { canonical: `${SITE.url}/services` },
   keywords: [
     'booking engine website', 'lead capture website', 'client portal development',
@@ -33,6 +33,21 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 const SERVICES_DETAIL = [
+  {
+    id: 'custom',
+    label: 'Custom Build',
+    headline: 'Not on the list? We still build it.',
+    body: 'WebAtlas is a full-stack studio — not a template shop. If your project needs custom logic, integrations, dashboards, marketplaces, SaaS features, or something we have never listed, we scope it, preview it, and engineer it. The examples below are common builds, not boundaries.',
+    includes: [
+      'Discovery call + free live preview before you pay',
+      'Custom UI, backend, and integrations scoped to your workflow',
+      'Auth, payments, APIs, admin panels — whatever the project needs',
+      'Fixed quote after preview — no hourly surprises',
+      'You own the code; no platform lock-in',
+    ],
+    for: 'Any business with a specific idea — startups, SMBs, agencies, exporters, operators',
+    price: 'Quoted per project',
+  },
   {
     id: 'booking',
     label: 'Booking Engine',
@@ -183,13 +198,18 @@ export default function ServicesPage() {
             className="font-display font-bold tracking-tight text-wa-ink"
             style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}
           >
-            Six systems.{' '}
-            <span className="text-gradient">One mission.</span>
+            Built for your business.{' '}
+            <span className="text-gradient">Not a menu.</span>
           </h1>
-          <p className="text-wa-ink-2 text-lg max-w-xl leading-relaxed">
-            Every website we build is designed around a specific business outcome — 
-            not around what looks good in a portfolio screenshot.
+          <p className="text-wa-ink-2 text-lg max-w-2xl leading-relaxed">
+            We engineer custom websites and web apps around what you actually need —
+            booking, leads, portals, marketplaces, dashboards, or something entirely your own.
+            The sections below are examples we build often, not the only things we do.
           </p>
+          <Link href="/contact" className="btn-primary mt-2">
+            Describe your project
+            <ArrowRight />
+          </Link>
         </div>
       </section>
 
@@ -274,8 +294,9 @@ export default function ServicesPage() {
             >
               Transparent pricing
             </h2>
-            <p className="text-wa-ink-2 text-base max-w-md">
-              All prices are project-fixed. No hourly billing, no scope creep surprises.
+            <p className="text-wa-ink-2 text-base max-w-lg leading-relaxed">
+              Starting ranges for common builds. Custom projects are quoted after your free preview —
+              fixed scope, no hourly billing, no scope creep surprises.
             </p>
           </div>
 
@@ -345,11 +366,11 @@ export default function ServicesPage() {
       <section className="py-24" aria-label="Services CTA">
         <div className="section text-center flex flex-col items-center gap-6">
           <h2 className="font-display font-bold text-3xl text-wa-ink tracking-tight">
-            Not sure which system you need?
+            Have an idea we haven&apos;t listed?
           </h2>
-          <p className="text-wa-ink-2 max-w-md leading-relaxed">
-            Book a free 20-minute audit. We'll look at your current site and tell you 
-            exactly what's costing you clients — and what would fix it.
+          <p className="text-wa-ink-2 max-w-lg leading-relaxed">
+            Describe what you want built — we&apos;ll tell you if we can do it, show you a live preview,
+            and quote it fixed before you pay anything.
           </p>
           <Link href="/contact" className="btn-primary px-8 py-3.5">
             Book Free Audit

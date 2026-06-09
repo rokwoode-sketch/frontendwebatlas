@@ -67,6 +67,7 @@ const SERVICES = [
   { id: 'catalog',   title: 'B2B Product Catalog',  body: 'Browse, filter, request a quote. International buyers expect this. A PDF on WhatsApp is not a catalog.',   tag: 'Suppliers · Export · Manufacturing' },
   { id: 'rsvp',      title: 'Direct Reservation',   body: 'Guests book directly — no third-party cut, no commission. A proper reservation flow on your own site.',    tag: 'Riads · Restaurants · Tour operators' },
   { id: 'multi',     title: 'Multilingual Site',    body: 'French, English, Arabic — full site in multiple languages. Because trust is built in someone\'s own language.', tag: 'Export · Tourism · International services' },
+  { id: 'custom',    title: 'Custom Build',         body: 'Something not on this list? Marketplaces, SaaS, admin panels, automations — we engineer it from scratch.', tag: 'Any scope · quoted after your free preview', hot: false },
 ]
 
 const STEPS = [
@@ -105,6 +106,7 @@ const INVESTMENT = [
   { tier: 'Lead Capture Site', range: '$800 – $1,400', timeline: '7–10 days', includes: 'Multi-step forms, service pages, mobile build, SEO setup' },
   { tier: 'Booking Engine', range: '$1,200 – $2,200', timeline: '10–14 days', includes: 'Calendar logic, confirmations, admin view, payment-ready' },
   { tier: 'Client Portal / B2B', range: '$1,500 – $2,800', timeline: '12–18 days', includes: 'Auth, dashboards, file upload, role-based access' },
+  { tier: 'Custom Build', range: 'Scoped per project', timeline: 'Varies', includes: 'Anything you need — SaaS, marketplace, internal tool, complex integrations. Fixed quote after preview.' },
 ]
 
 const CLIENT_VOICES = [
@@ -169,9 +171,9 @@ export default function HomePage() {
 
           <Reveal variants={fadeUp} delay={0.62} immediate>
             <p className="text-wa-ink-2 text-lg leading-relaxed max-w-lg">
-              Custom-built for established businesses —&nbsp;
-              <strong className="text-wa-ink">booking systems, lead engines, client portals.</strong>
-              &nbsp;Delivered in 10 days. Priced honestly.
+              Custom-built for your business —&nbsp;
+              <strong className="text-wa-ink">whatever you need online.</strong>
+              &nbsp;Booking, portals, dashboards, marketplaces, internal tools. If you can describe it, we can build it.
             </p>
           </Reveal>
 
@@ -311,12 +313,12 @@ export default function HomePage() {
             <Reveal delay={0.1}>
               <h2 id="services-heading"
                 className="font-display font-bold text-3xl md:text-[2.6rem] tracking-tight">
-                Systems that grow your business
+                Your idea. Engineered.
               </h2>
             </Reveal>
             <Reveal delay={0.18}>
-              <p className="text-wa-ink-2 text-base max-w-md">
-                Not pages. Not templates. Business tools that happen to live on the web.
+              <p className="text-wa-ink-2 text-base max-w-lg leading-relaxed">
+                Below are builds we do often — not a limit. Need something different? Tell us what you want and we&apos;ll scope it.
               </p>
             </Reveal>
           </div>
@@ -344,7 +346,7 @@ export default function HomePage() {
 
           <Reveal delay={0.3}>
             <div className="flex justify-center mt-10">
-              <Link href="/services" className="btn-ghost">All services <Arrow /></Link>
+              <Link href="/contact" className="btn-ghost">Describe your project <Arrow /></Link>
             </div>
           </Reveal>
         </div>
@@ -434,7 +436,7 @@ export default function HomePage() {
             </Reveal>
           </div>
 
-          <StaggerReveal className="grid grid-cols-1 md:grid-cols-3 gap-5" stagger={0.08}>
+          <StaggerReveal className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5" stagger={0.08}>
             {INVESTMENT.map(tier => (
               <motion.div key={tier.tier} variants={fadeUp}>
                 <GlassCard accent="#5E6AD2" intensity={7} className="h-full p-6 flex flex-col gap-5">
@@ -453,8 +455,8 @@ export default function HomePage() {
           </StaggerReveal>
 
           <Reveal delay={0.3}>
-            <p className="text-center text-wa-ink-3 text-xs mt-8 max-w-md mx-auto">
-              Final price depends on page count, integrations, and languages. You get a locked quote after the free preview — before any payment.
+            <p className="text-center text-wa-ink-3 text-xs mt-8 max-w-lg mx-auto">
+              Ranges shown are for common builds. Custom projects are scoped and quoted after your free preview — before any payment.
             </p>
           </Reveal>
         </div>

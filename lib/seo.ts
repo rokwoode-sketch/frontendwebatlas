@@ -6,7 +6,7 @@ export const SITE = {
   locale: 'en_US',
   languages: ['en', 'fr'],
   description:
-    'WebAtlas is a functional web studio in Casablanca, Morocco. We build business websites that work — booking engines, lead capture systems, client portals, B2B catalogs, and direct reservation flows — delivered in 10 days, 100% remote, from $800.',
+    'WebAtlas is a functional web studio in Casablanca, Morocco. We build custom websites and web applications for any business need — booking engines, portals, marketplaces, dashboards, and more — delivered in days, 100% remote, from $800.',
   tagline: 'Websites that close deals. Not just for show.',
   location: {
     city: 'Casablanca',
@@ -69,9 +69,22 @@ export const FAQS: FaqItem[] = [
     q: 'Do I need technical skills to work with WebAtlas?',
     a: 'No. You provide your logo, describe your business, and give feedback on the preview. WebAtlas handles design, development, and launch. Most clients spend under 3 hours total on their end.',
   },
+  {
+    q: 'Can WebAtlas build something not listed on your services page?',
+    a: 'Yes. The services page shows common projects — not limits. WebAtlas builds custom websites, web apps, dashboards, marketplaces, SaaS features, and internal tools. Describe your idea and you get a free preview plus a fixed quote before any payment.',
+  },
 ]
 
 export const SERVICES = [
+  {
+    id: 'custom',
+    name: 'Custom Web Application',
+    serviceType: 'Custom website and web application development',
+    description:
+      'Bespoke websites and web applications engineered around your exact requirements — any scope, any industry.',
+    price: 'Quoted per project',
+    audience: 'Any business with a custom idea or non-standard workflow',
+  },
   {
     id: 'booking',
     name: 'Booking Engine',

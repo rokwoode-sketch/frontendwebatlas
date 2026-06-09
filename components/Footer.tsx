@@ -3,6 +3,7 @@ import { Logo } from './Logo'
 
 const LINKS = {
   Services: [
+    { href: '/services#custom',    label: 'Custom Builds'    },
     { href: '/services#booking',   label: 'Booking Engines'  },
     { href: '/services#leadgen',   label: 'Lead Machines'    },
     { href: '/services#portal',    label: 'Client Portals'   },

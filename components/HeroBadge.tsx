@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const SKILLS = ['UI Design', 'Motion', 'Next.js', 'Conversion', 'SEO'] as const
+const SKILLS = ['UI Design', 'Custom Apps', 'Next.js', 'Integrations', 'Full-Stack'] as const
 
 function BrowserChrome() {
   return (

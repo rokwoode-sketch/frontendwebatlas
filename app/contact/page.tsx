@@ -2,15 +2,18 @@
 
 import { useState } from 'react'
 
-const SERVICES = [
+const PROJECT_TYPES = [
+  'Custom project — tell us your idea',
   'Booking Engine',
   'Lead Machine',
   'Client Portal',
   'B2B Catalog + RFQ',
   'Reservation System',
   'Multilingual Site',
-  'AI Solutions',
-  'Not sure yet',
+  'Dashboard / internal tool',
+  'Marketplace / SaaS',
+  'AI / automation',
+  'Something else',
 ]
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -178,16 +181,15 @@ export default function ContactPage() {
 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="service" className="text-xs font-semibold text-wa-ink-2 uppercase tracking-wider">
-                    What do you need?
+                    Project type <span className="text-wa-ink-3 normal-case tracking-normal">(optional)</span>
                   </label>
                   <select
                     id="service"
                     name="service"
                     className={`${inputClass} cursor-pointer`}
-                    defaultValue=""
+                    defaultValue={PROJECT_TYPES[0]}
                   >
-                    <option value="" disabled>Select a service…</option>
-                    {SERVICES.map((s) => (
+                    {PROJECT_TYPES.map((s) => (
                       <option key={s} value={s}>{s}</option>
                     ))}
                   </select>
@@ -203,7 +205,7 @@ export default function ContactPage() {
                     required
                     minLength={10}
                     rows={5}
-                    placeholder="What does your business do? What's wrong with your current website? What would you like it to do for you?"
+                    placeholder="Describe what you want built — even if it's not on our site. What does your business do? What should the site or app do for you?"
                     className={`${inputClass} resize-none`}
                   />
                 </div>

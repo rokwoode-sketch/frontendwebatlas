@@ -6,9 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 const DEFAULT_PHONE = '+212600000000'
 
 const QUICK_MESSAGES = [
+  { label: 'Custom project', text: "Hi WebAtlas — I have a custom project in mind and want to know if you can build it." },
   { label: 'Free site audit', text: "Hi WebAtlas — I'd like a free audit of my current website." },
-  { label: 'Booking system', text: "Hi WebAtlas — I need a booking system for my business." },
-  { label: 'Get a quote', text: "Hi WebAtlas — I'd like a quote for a new website project." },
+  { label: 'Get a quote', text: "Hi WebAtlas — I'd like a quote for something I want built." },
 ] as const
 
 function WhatsAppIcon({ size = 22 }: { size?: number }) {
@@ -98,7 +98,7 @@ export default function WhatsAppWidget() {
               <div className="wa-widget-body">
                 <p className="wa-widget-headline">Need a site that actually converts?</p>
                 <p className="wa-widget-sub">
-                  Tell us what you&apos;re building — booking, leads, or a full redesign. We&apos;ll respond on WhatsApp.
+                  Tell us what you want built — anything from a booking flow to a full custom platform. We&apos;ll respond on WhatsApp.
                 </p>
 
                 <div className="wa-widget-chips">
