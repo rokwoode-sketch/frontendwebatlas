@@ -2,8 +2,9 @@
 [phases.setup]
 nixPkgs = ["nodejs_22"]
 
+# install phase already runs `npm ci` — do not repeat it here (causes EBUSY cache error)
 [phases.build]
-cmds = ["npm ci", "npm run build"]
+cmds = ["npm run build"]
 
 [start]
 cmd = "npm run start"
