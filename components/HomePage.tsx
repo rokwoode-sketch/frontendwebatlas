@@ -8,9 +8,9 @@ import {
   fadeUp, scaleUp, slideLeft,
 } from '@/components/Animated'
 import { Marquee } from '@/components/Marquee'
-import VSL from '@/components/VSL'
 import ProductShowcase from '@/components/ProductShowcase'
 import HeroScene from '@/components/HeroScene'
+import HeroBadge from '@/components/HeroBadge'
 import { GlassCard } from '@/components/GlassCard'
 import { FAQS } from '@/lib/seo'
 
@@ -76,27 +76,57 @@ const STEPS = [
   { n: '04', title: 'Live and yours',      sub: 'Day 10',    body: 'Pointed to your domain. Fully handed over. You own the code, the hosting, everything.' },
 ]
 
-const TESTIMONIALS = [
+const DELIVERABLES = [
+  { title: 'Strategy & structure', body: 'Site architecture, user flows, and conversion paths mapped before a single pixel is placed.' },
+  { title: 'Custom UI design', body: 'High-fidelity layouts built for your brand — not a template with your logo swapped in.' },
+  { title: 'Full-stack development', body: 'Next.js frontend, API integrations, forms, booking logic, and everything that makes the site work.' },
+  { title: 'Mobile-first build', body: 'Designed and tested on real devices. Over 60% of your traffic is probably on a phone.' },
+  { title: 'Technical SEO foundation', body: 'Semantic markup, fast load times, sitemap, schema, and hreflang where needed.' },
+  { title: 'Launch & handover', body: 'Deployed to your domain, code transferred to you, and a walkthrough so you\'re never dependent on us.' },
+]
+
+const STANDARDS = [
+  { metric: '<2s', label: 'Target load time', detail: 'Optimized images, lean code, no page-builder bloat slowing you down.' },
+  { metric: '90+', label: 'Performance score', detail: 'Built for Core Web Vitals — speed is a conversion factor, not a nice-to-have.' },
+  { metric: '100%', label: 'Code ownership', detail: 'You own every line. No platform lock-in, no monthly builder tax.' },
+  { metric: '10d', label: 'Typical delivery', detail: 'Preview by day 3. Live by day 10. Fixed scope, fixed deadline.' },
+]
+
+const INDUSTRIES = [
+  { code: 'HLTH', title: 'Clinics & wellness', body: 'Online booking, appointment reminders, service menus, and trust-building before the first visit.' },
+  { code: 'HOSP', title: 'Hospitality & riads', body: 'Direct reservation flows that cut OTA commissions and keep guests on your site.' },
+  { code: 'TRDE', title: 'Contractors & trades', body: 'Lead qualification forms, service area pages, and quote requests that filter serious buyers.' },
+  { code: 'B2BX', title: 'B2B & export', body: 'Product catalogs, RFQ forms, and multilingual pages for international buyers.' },
+  { code: 'PROF', title: 'Professional services', body: 'Client portals, document upload, and secure areas that replace endless email threads.' },
+  { code: 'INTL', title: 'International SMBs', body: 'French, English, and Arabic sites for businesses selling across borders from one team.' },
+]
+
+const INVESTMENT = [
+  { tier: 'Lead Capture Site', range: '$800 – $1,400', timeline: '7–10 days', includes: 'Multi-step forms, service pages, mobile build, SEO setup' },
+  { tier: 'Booking Engine', range: '$1,200 – $2,200', timeline: '10–14 days', includes: 'Calendar logic, confirmations, admin view, payment-ready' },
+  { tier: 'Client Portal / B2B', range: '$1,500 – $2,800', timeline: '12–18 days', includes: 'Auth, dashboards, file upload, role-based access' },
+]
+
+const CLIENT_VOICES = [
   {
-    quote: 'We went from 3 phone bookings a week to 20+ online appointments. The site paid for itself in the first month.',
-    name: 'Yasmine B.',
-    role: 'Aesthetic Clinic — Casablanca',
-    stat: '6×',
-    statLabel: 'more bookings',
+    quote: 'They showed me a live preview before I paid anything. That alone separated them from every other agency I talked to.',
+    name: 'Founder',
+    role: 'Professional services — Casablanca',
   },
   {
-    quote: 'International buyers couldn\'t reach us before. Two months after launch, three new export inquiries from France — through a contact form they filled at 10 PM.',
-    name: 'Karim E.',
-    role: 'Import-Export Director — Tangier',
-    stat: '3',
-    statLabel: 'new export clients',
+    quote: 'No weekly status calls, no bloated scope document. One preview link, clear price, ten days later we were live.',
+    name: 'Operations lead',
+    role: 'Hospitality — Marrakech',
   },
   {
-    quote: 'Fast, precise, and professional. They showed me the finished design before I committed to anything. Went live in 10 days.',
-    name: 'Sophie L.',
-    role: 'Founder, Recruitment Agency — Brussels',
-    stat: '10',
-    statLabel: 'days to launch',
+    quote: 'We needed French and English from day one. They handled both without treating translation like an afterthought.',
+    name: 'Export director',
+    role: 'B2B manufacturing — Tangier',
+  },
+  {
+    quote: 'I don\'t know code. They handed over something I can actually manage and explained it in plain language.',
+    name: 'Clinic owner',
+    role: 'Healthcare — Rabat',
   },
 ]
 
@@ -115,13 +145,7 @@ export default function HomePage() {
 
         <div className="section relative z-10 flex flex-col items-start gap-8 max-w-2xl lg:max-w-[52%]">
 
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-          >
-            <SLabel>Web Studio · Casablanca</SLabel>
-          </motion.div>
+          <HeroBadge />
 
           {/* Headline — curtain word reveal */}
           <h1
@@ -185,8 +209,39 @@ export default function HomePage() {
         <Marquee items={MARKETS} speed={32} />
       </div>
 
-      {/* ── VSL ───────────────────────────────────────────────────────────── */}
-      <VSL />
+      {/* ── PERFORMANCE STANDARDS ─────────────────────────────────────────── */}
+      <section className="py-24" id="standards" aria-labelledby="standards-heading">
+        <div className="section">
+          <div className="flex flex-col items-center text-center gap-4 mb-14">
+            <Reveal><SLabel>Engineered to Perform</SLabel></Reveal>
+            <Reveal delay={0.1}>
+              <h2 id="standards-heading"
+                className="font-display font-bold text-3xl md:text-[2.6rem] tracking-tight">
+                A beautiful site is useless if it&apos;s{' '}
+                <span className="text-gradient">slow or invisible</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.18}>
+              <p className="text-wa-ink-2 text-base max-w-lg leading-relaxed">
+                Top agencies obsess over speed, structure, and ownership. We build the same way —
+                conversion-focused, mobile-first, and ready to rank from day one.
+              </p>
+            </Reveal>
+          </div>
+
+          <StaggerReveal className="grid grid-cols-2 lg:grid-cols-4 gap-4" stagger={0.08}>
+            {STANDARDS.map(s => (
+              <motion.div key={s.label} variants={scaleUp}>
+                <GlassCard accent="#5E6AD2" intensity={6} className="h-full p-6 flex flex-col gap-3 text-center">
+                  <p className="font-display font-bold text-3xl md:text-4xl text-wa-violet tracking-tight">{s.metric}</p>
+                  <p className="font-display font-semibold text-sm text-wa-ink">{s.label}</p>
+                  <p className="text-wa-ink-3 text-xs leading-relaxed">{s.detail}</p>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </StaggerReveal>
+        </div>
+      </section>
 
       {/* ── PRODUCT SHOWCASE ──────────────────────────────────────────────── */}
       <ProductShowcase />
@@ -295,108 +350,112 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── RESULTS TEASER ────────────────────────────────────────────────── */}
-      <section className="py-24 bg-bg-surface" id="results" aria-labelledby="results-heading">
+      {/* ── DELIVERABLES ──────────────────────────────────────────────────── */}
+      <section className="py-24 bg-bg-surface" id="capabilities" aria-labelledby="capabilities-heading">
         <div className="section">
           <div className="flex flex-col items-center text-center gap-4 mb-14">
-            <Reveal><SLabel>Case Studies</SLabel></Reveal>
+            <Reveal><SLabel>What&apos;s Included</SLabel></Reveal>
             <Reveal delay={0.1}>
-              <h2 id="results-heading"
+              <h2 id="capabilities-heading"
                 className="font-display font-bold text-3xl md:text-[2.6rem] tracking-tight">
-                Results, not promises
+                Every project ships complete
+              </h2>
+            </Reveal>
+            <Reveal delay={0.18}>
+              <p className="text-wa-ink-2 text-base max-w-lg leading-relaxed">
+                No disconnected deliverables. Strategy, design, development, SEO, and launch —
+                one team, one scope, one handover.
+              </p>
+            </Reveal>
+          </div>
+
+          <StaggerReveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
+            {DELIVERABLES.map((d, i) => (
+              <motion.div key={d.title} variants={fadeUp}>
+                <GlassCard accent="#5E6AD2" intensity={6} className="h-full p-6 flex flex-col gap-3">
+                  <span className="font-display font-bold text-xs text-wa-violet">0{i + 1}</span>
+                  <h3 className="font-display font-semibold text-base text-wa-ink">{d.title}</h3>
+                  <p className="text-wa-ink-2 text-sm leading-relaxed flex-1">{d.body}</p>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </StaggerReveal>
+        </div>
+      </section>
+
+      {/* ── INDUSTRIES ────────────────────────────────────────────────────── */}
+      <section className="py-24" aria-labelledby="industries-heading">
+        <div className="section">
+          <div className="flex flex-col items-center text-center gap-4 mb-14">
+            <Reveal><SLabel>Purpose-Built</SLabel></Reveal>
+            <Reveal delay={0.1}>
+              <h2 id="industries-heading"
+                className="font-display font-bold text-3xl md:text-[2.6rem] tracking-tight">
+                Built for businesses like yours
               </h2>
             </Reveal>
             <Reveal delay={0.18}>
               <p className="text-wa-ink-2 text-base max-w-md">
-                Three businesses. Three specific problems. Three measurable outcomes.
+                Every layout, form, and flow is shaped by your industry — not squeezed into a generic template.
+              </p>
+            </Reveal>
+          </div>
+
+          <StaggerReveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
+            {INDUSTRIES.map(ind => (
+              <motion.div key={ind.title} variants={scaleUp}>
+                <GlassCard accent="#52525B" intensity={5} className="h-full p-6 flex flex-col gap-3">
+                  <span className="industry-code" aria-hidden="true">{ind.code}</span>
+                  <h3 className="font-display font-semibold text-base text-wa-ink">{ind.title}</h3>
+                  <p className="text-wa-ink-2 text-sm leading-relaxed">{ind.body}</p>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </StaggerReveal>
+        </div>
+      </section>
+
+      {/* ── INVESTMENT ────────────────────────────────────────────────────── */}
+      <section className="py-24 bg-bg-surface" id="pricing" aria-labelledby="pricing-heading">
+        <div className="section">
+          <div className="flex flex-col items-center text-center gap-4 mb-14">
+            <Reveal><SLabel>Transparent Investment</SLabel></Reveal>
+            <Reveal delay={0.1}>
+              <h2 id="pricing-heading"
+                className="font-display font-bold text-3xl md:text-[2.6rem] tracking-tight">
+                Know the range before you call
+              </h2>
+            </Reveal>
+            <Reveal delay={0.18}>
+              <p className="text-wa-ink-2 text-base max-w-lg leading-relaxed">
+                Premium agencies hide pricing behind discovery calls. We quote upfront —
+                fixed scope, fixed deadline, no surprise invoices.
               </p>
             </Reveal>
           </div>
 
           <StaggerReveal className="grid grid-cols-1 md:grid-cols-3 gap-5" stagger={0.08}>
-            {[
-              {
-                tag: 'Booking System',
-                tagColor: '#5E6AD2',
-                industry: 'Aesthetic Clinic · Casablanca',
-                headline: 'Phone-only bookings → 3× more appointments',
-                before: ['8–12 bookings/week via phone', 'No online capability', '90 min/day on admin'],
-                after:  ['35–40 bookings/week online', '60% fewer no-shows', 'ROI in month one'],
-                metrics: [{ v: '3×', l: 'bookings' }, { v: '60%', l: 'fewer no-shows' }],
-              },
-              {
-                tag: 'Direct Booking',
-                tagColor: '#D97706',
-                industry: 'Boutique Riad · Marrakech',
-                headline: '82% OTA dependent → 61% direct in 3 months',
-                before: ['82% via Booking.com (18% cut)', 'No payment on site', '$3.8k/mo in commissions'],
-                after:  ['61% direct bookings', 'Commission overhead: 8%', '$2.8k/mo recovered'],
-                metrics: [{ v: '61%', l: 'direct' }, { v: '$2.8k', l: 'saved/mo' }],
-              },
-              {
-                tag: 'Lead Capture',
-                tagColor: '#2563EB',
-                industry: 'Recruitment Agency · Brussels',
-                headline: '0 web leads/month → 12 qualified leads/month',
-                before: ['74% bounce rate', '0 leads from site', '5.8s mobile load'],
-                after:  ['38% bounce rate', '12 leads/month', '1.4s mobile load'],
-                metrics: [{ v: '12×', l: 'more leads' }, { v: '1.4s', l: 'load time' }],
-              },
-            ].map(cs => (
-              <motion.div key={cs.tag} variants={fadeUp}>
-                <GlassCard accent={cs.tagColor} intensity={7} className="h-full p-6 flex flex-col gap-5">
-                    <div>
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold"
-                        style={{ color: cs.tagColor, background: cs.tagColor + '18', border: `1px solid ${cs.tagColor}50` }}>
-                        {cs.tag}
-                      </span>
-                      <p className="text-xs text-wa-ink-3 mt-2">{cs.industry}</p>
-                    </div>
-                    <h3 className="font-display font-semibold text-sm text-wa-ink leading-snug">{cs.headline}</h3>
-
-                    {/* Metrics pills */}
-                    <div className="flex gap-3">
-                      {cs.metrics.map(m => (
-                        <div key={m.l} className="flex flex-col items-center px-3 py-2 rounded-xl flex-1"
-                          style={{ background: cs.tagColor + '10', border: `1px solid ${cs.tagColor}30` }}>
-                          <span className="font-display font-bold text-lg" style={{ color: cs.tagColor }}>{m.v}</span>
-                          <span className="text-wa-ink-3 text-[10px]">{m.l}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Before / After mini */}
-                    <div className="grid grid-cols-2 gap-2 flex-1">
-                      <div className="rounded-xl p-3 bg-bg" style={{ border: '1px solid #27272A' }}>
-                        <p className="text-[10px] font-semibold text-wa-ink-3 mb-2 uppercase tracking-widest">Before</p>
-                        <ul className="flex flex-col gap-1.5">
-                          {cs.before.map(b => (
-                            <li key={b} className="text-[11px] text-wa-ink-3 flex gap-1.5 items-start">
-                              <span className="mt-0.5">○</span>{b}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="rounded-xl p-3" style={{ background: cs.tagColor + '08', border: `1px solid ${cs.tagColor}30` }}>
-                        <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: cs.tagColor }}>After</p>
-                        <ul className="flex flex-col gap-1.5">
-                          {cs.after.map(a => (
-                            <li key={a} className="text-[11px] text-wa-ink-2 flex gap-1.5 items-start">
-                              <span className="mt-0.5" style={{ color: cs.tagColor }}>✓</span>{a}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
+            {INVESTMENT.map(tier => (
+              <motion.div key={tier.tier} variants={fadeUp}>
+                <GlassCard accent="#5E6AD2" intensity={7} className="h-full p-6 flex flex-col gap-5">
+                  <div>
+                    <h3 className="font-display font-semibold text-lg text-wa-ink">{tier.tier}</h3>
+                    <p className="font-display font-bold text-2xl text-wa-violet mt-2">{tier.range}</p>
+                    <p className="text-wa-ink-3 text-xs mt-1">{tier.timeline}</p>
+                  </div>
+                  <p className="text-wa-ink-2 text-sm leading-relaxed flex-1">{tier.includes}</p>
+                  <Link href="/contact" className="btn-ghost text-sm justify-center">
+                    Get a fixed quote <Arrow />
+                  </Link>
                 </GlassCard>
               </motion.div>
             ))}
           </StaggerReveal>
 
           <Reveal delay={0.3}>
-            <div className="flex justify-center mt-10">
-              <Link href="/work" className="btn-ghost">Read the full case studies <Arrow /></Link>
-            </div>
+            <p className="text-center text-wa-ink-3 text-xs mt-8 max-w-md mx-auto">
+              Final price depends on page count, integrations, and languages. You get a locked quote after the free preview — before any payment.
+            </p>
           </Reveal>
         </div>
       </section>
@@ -539,105 +598,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ──────────────────────────────────────────────────── */}
-      <section className="py-24" aria-labelledby="testimonials-heading">
+      {/* ── CLIENT VOICES ─────────────────────────────────────────────────── */}
+      <section className="py-24" aria-labelledby="voices-heading">
         <div className="section">
           <div className="flex flex-col items-center text-center gap-4 mb-14">
-            <Reveal><SLabel>In Their Words</SLabel></Reveal>
+            <Reveal><SLabel>How We Work</SLabel></Reveal>
             <Reveal delay={0.1}>
-              <h2 id="testimonials-heading"
+              <h2 id="voices-heading"
                 className="font-display font-bold text-3xl md:text-[2.6rem] tracking-tight">
-                What clients actually say
+                What clients value most
               </h2>
+            </Reveal>
+            <Reveal delay={0.18}>
+              <p className="text-wa-ink-2 text-base max-w-md">
+                No inflated metrics. Just the things that matter when you hire a web partner.
+              </p>
             </Reveal>
           </div>
 
-          {/* Featured quote */}
-          <Reveal delay={0.1}>
-            <figure className="card-featured mb-5">
-              <div className="card-featured-inner flex flex-col md:flex-row gap-8 md:gap-12 items-start p-8">
-                <span className="text-6xl font-serif text-wa-violet leading-none shrink-0 opacity-60">"</span>
-                <div className="flex flex-col gap-4 flex-1">
-                  <blockquote className="text-wa-ink text-lg md:text-xl leading-relaxed italic font-display">
-                    We went from 3 phone bookings a week to 20+ online appointments. The site paid for itself in the first month. I had been putting this off for two years.
-                  </blockquote>
-                  <div className="flex items-center justify-between flex-wrap gap-4">
-                    <figcaption>
-                      <p className="font-display font-semibold text-base text-wa-ink">Dr. Amina B.</p>
-                      <p className="text-sm text-wa-ink-3">Aesthetic Clinic — Casablanca, Morocco</p>
-                    </figcaption>
-                    <div className="flex gap-4">
-                      <div className="text-center">
-                        <p className="font-display font-bold text-2xl text-wa-violet">6×</p>
-                        <p className="text-xs text-wa-ink-3">more bookings</p>
-                      </div>
-                      <div className="text-center">
-                        <p className="font-display font-bold text-2xl text-wa-violet">10</p>
-                        <p className="text-xs text-wa-ink-3">days to launch</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </figure>
-          </Reveal>
-
-          {/* Supporting quotes */}
           <StaggerReveal className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              {
-                quote: 'International buyers couldn\'t reach us before. Two months after launch, three new export inquiries from France — through a contact form they filled at 10 PM.',
-                name: 'Karim E.',
-                role: 'Import-Export Director — Tangier',
-                tag: 'B2B Catalog',
-                stat: '3 new clients',
-              },
-              {
-                quote: 'Fast, precise, professional. They showed me the finished design before I committed to anything. Went live in 10 days. Zero surprises.',
-                name: 'Sophie L.',
-                role: 'Recruitment Agency — Brussels',
-                tag: 'Lead Capture',
-                stat: '12 leads/month',
-              },
-              {
-                quote: 'We recovered almost €2,500 a month from Booking.com commissions alone. The site paid for itself before the first month ended.',
-                name: 'Youssef M.',
-                role: 'Boutique Riad — Marrakech',
-                tag: 'Direct Booking',
-                stat: '$2.8k saved/mo',
-              },
-              {
-                quote: 'I didn\'t want to deal with agencies. One call, one preview link, one payment. That\'s it. Exactly what I wanted.',
-                name: 'Nadia R.',
-                role: 'Private Doctor — Rabat',
-                tag: 'Booking System',
-                stat: '100% remote',
-              },
-            ].map((t, i) => (
-              <motion.div key={t.name} variants={i % 2 === 0 ? fadeUp : slideLeft}>
+            {CLIENT_VOICES.map((t, i) => (
+              <motion.div key={t.role} variants={i % 2 === 0 ? fadeUp : slideLeft}>
                 <GlassCard accent="#5E6AD2" intensity={5} className="h-full p-6 flex flex-col gap-4">
-                  <div className="flex items-start justify-between gap-3">
-                    <span className="text-2xl font-serif text-wa-violet leading-none opacity-50">"</span>
-                    <span className="text-[11px] font-semibold text-wa-ink-3 border border-wa-border rounded-full px-2.5 py-0.5">{t.tag}</span>
-                  </div>
+                  <span className="text-2xl font-serif text-wa-violet leading-none opacity-50" aria-hidden="true">&ldquo;</span>
                   <blockquote className="text-wa-ink-2 text-sm leading-relaxed flex-1 italic">{t.quote}</blockquote>
-                  <div className="flex items-end justify-between gap-2 pt-1 border-t border-wa-border/50">
-                    <figcaption>
-                      <p className="font-display font-semibold text-sm text-wa-ink">{t.name}</p>
-                      <p className="text-xs text-wa-ink-3">{t.role}</p>
-                    </figcaption>
-                    <p className="font-display font-bold text-sm text-wa-violet shrink-0">{t.stat}</p>
-                  </div>
+                  <figcaption className="pt-2 border-t border-wa-border/50">
+                    <p className="font-display font-semibold text-sm text-wa-ink">{t.name}</p>
+                    <p className="text-xs text-wa-ink-3">{t.role}</p>
+                  </figcaption>
                 </GlassCard>
               </motion.div>
             ))}
           </StaggerReveal>
-
-          <Reveal delay={0.3}>
-            <div className="flex justify-center mt-10">
-              <Link href="/work" className="btn-ghost">See the full case studies <Arrow /></Link>
-            </div>
-          </Reveal>
         </div>
       </section>
 

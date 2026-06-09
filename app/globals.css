@@ -374,6 +374,144 @@ html, body {
   .ambient-orb-violet { width: 480px; height: 480px; background: radial-gradient(circle, rgba(94,106,210,0.2) 0%, transparent 70%); }
   .ambient-orb-gold    { width: 360px; height: 360px; background: radial-gradient(circle, rgba(56,189,248,0.12) 0%, transparent 70%); }
 
+  /* ─── Hero identity badge ───────────────────── */
+  .hero-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: stretch;
+    border-radius: 0.65rem;
+    border: 1px solid rgba(94, 106, 210, 0.45);
+    background: linear-gradient(135deg, rgba(12, 12, 24, 0.92) 0%, rgba(6, 6, 16, 0.88) 100%);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.06) inset,
+      0 8px 32px rgba(0, 0, 0, 0.45),
+      0 0 24px rgba(94, 106, 210, 0.12);
+    overflow: hidden;
+    font-family: var(--font-space-grotesk), ui-monospace, monospace;
+  }
+
+  .hero-badge-glow {
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, transparent, rgba(94, 106, 210, 0.35), rgba(56, 189, 248, 0.2), transparent);
+    opacity: 0.55;
+    animation: hero-badge-scan 4s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes hero-badge-scan {
+    0%   { transform: translateX(-120%); }
+    100% { transform: translateX(120%); }
+  }
+
+  .hero-badge-segment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.1rem;
+    padding: 0.55rem 0.85rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge-divider {
+    width: 1px;
+    align-self: stretch;
+    background: linear-gradient(to bottom, transparent, rgba(94, 106, 210, 0.5), transparent);
+    flex-shrink: 0;
+  }
+
+  .hero-badge-status {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.45rem;
+    padding-right: 0.7rem;
+  }
+
+  .hero-badge-pulse {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: #34D399;
+    box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
+    animation: hero-badge-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes hero-badge-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.55; transform: scale(0.85); }
+  }
+
+  .hero-badge-status-text {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #6EE7B7;
+  }
+
+  .hero-badge-kicker {
+    font-size: 0.52rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: #5C5C72;
+    line-height: 1;
+  }
+
+  .hero-badge-main {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #E4E4E7;
+    line-height: 1.2;
+  }
+
+  .hero-badge-city {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #A5B4FC;
+    line-height: 1.2;
+  }
+
+  .hero-badge-meta {
+    font-size: 0.52rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: #5C5C72;
+    line-height: 1;
+  }
+
+  @media (max-width: 520px) {
+    .hero-badge { flex-wrap: wrap; max-width: 100%; }
+    .hero-badge-divider:nth-of-type(4) { display: none; }
+    .hero-badge-loc {
+      width: 100%;
+      border-top: 1px solid rgba(94, 106, 210, 0.25);
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+  }
+
+  /* ─── Industry sector codes ─────────────────── */
+  .industry-code {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 0.2rem 0.55rem;
+    border-radius: 0.35rem;
+    border: 1px solid rgba(94, 106, 210, 0.35);
+    background: rgba(94, 106, 210, 0.08);
+    font-family: var(--font-space-grotesk), ui-monospace, monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #A5B4FC;
+  }
+
   /* ─── Label pill ─────────────────────────────── */
   .label-pill {
     @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold font-display;

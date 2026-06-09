@@ -7,7 +7,7 @@ import { Logo } from './Logo'
 const NAV_LINKS = [
   { href: '/#products', label: 'Products' },
   { href: '/services',  label: 'Services' },
-  { href: '/work',      label: 'Results'  },
+  { href: '/#process',  label: 'Process'  },
   { href: '/contact',   label: 'Contact'  },
 ]
 

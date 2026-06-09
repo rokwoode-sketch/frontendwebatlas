@@ -55,7 +55,7 @@ Yes. 100% remote via video call, preview links, Stripe/Wise payment. Clients in 
 
 - Homepage: https://webatlas.xyz
 - Services: https://webatlas.xyz/services
-- Case Studies: https://webatlas.xyz/work
+- Capabilities & pricing: https://webatlas.xyz/#capabilities
 - About: https://webatlas.xyz/about
 - Contact: https://webatlas.xyz/contact
 
