@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const config = {
-  output: 'standalone',
   async redirects() {
     return [{ source: '/work', destination: '/', permanent: true }]
   },

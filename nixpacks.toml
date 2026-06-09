@@ -7,7 +7,7 @@ nixPkgs = ["nodejs_22"]
 cmds = ["npm run build"]
 
 [start]
-cmd = "npm run start"
+cmd = "next start -H 0.0.0.0 -p 3000"
 
 [variables]
 NODE_ENV = "production"
