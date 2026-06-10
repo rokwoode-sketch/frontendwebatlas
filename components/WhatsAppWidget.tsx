@@ -38,7 +38,8 @@ function buildWaUrl(phone: string, message: string): string {
 
 export default function WhatsAppWidget() {
   const [open, setOpen] = useState(false)
-  const phone = process.env.NEXT_PUBLIC_WHATSAPP?.trim() || WHATSAPP_NUMBER
+  // Always use the canonical number — EasyPanel env must not override with a stale value
+  const phone = WHATSAPP_NUMBER
 
   const openChat = useCallback(
     (message: string) => {
