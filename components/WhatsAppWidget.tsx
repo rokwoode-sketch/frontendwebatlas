@@ -3,7 +3,7 @@
 import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const DEFAULT_PHONE = '+212600000000'
+const WHATSAPP_NUMBER = '+212624363356'
 
 const QUICK_MESSAGES = [
   { label: 'Custom project', text: "Hi WebAtlas — I have a custom project in mind and want to know if you can build it." },
@@ -38,7 +38,7 @@ function buildWaUrl(phone: string, message: string): string {
 
 export default function WhatsAppWidget() {
   const [open, setOpen] = useState(false)
-  const phone = process.env.NEXT_PUBLIC_WHATSAPP?.trim() || DEFAULT_PHONE
+  const phone = process.env.NEXT_PUBLIC_WHATSAPP?.trim() || WHATSAPP_NUMBER
 
   const openChat = useCallback(
     (message: string) => {

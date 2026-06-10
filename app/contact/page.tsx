@@ -155,13 +155,13 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-2">
                     <label htmlFor="phone" className="text-xs font-semibold text-wa-ink-2 uppercase tracking-wider">
-                      Phone / WhatsApp
+                      Phone <span className="text-wa-ink-3 normal-case tracking-normal">(optional)</span>
                     </label>
                     <input
                       id="phone"
                       name="phone"
                       type="tel"
-                      placeholder="+212 6 00 00 00 00"
+                      placeholder="Your number"
                       className={inputClass}
                     />
                   </div>
