@@ -99,6 +99,39 @@ curl -I https://webatlas.xyz/sitemap.xml
 
 Both should return `200 OK`.
 
+### 6. If GSC shows "Impossible de récupérer le sitemap"
+
+This usually means Google could not fetch the sitemap at submission time — not that the XML is invalid.
+
+**Verify the fetch works (Googlebot UA):**
+
+```bash
+curl.exe -A "Googlebot/2.1 (+http://www.google.com/bot.html)" -I https://webatlas.xyz/sitemap.xml
+curl.exe -A "Googlebot/2.1 (+http://www.google.com/bot.html)" -I https://webatlas.xyz/sitemap.xml/
+```
+
+Expected: `200 OK` on `/sitemap.xml`, `301` → `/sitemap.xml` on `/sitemap.xml/` (no trailing slash on the file URL).
+
+**GSC checklist:**
+
+| Check | Correct value |
+|-------|----------------|
+| Property type | URL prefix `https://webatlas.xyz` |
+| Sitemap submitted | `sitemap.xml` only (not `sitemap.xml/`) |
+| Full sitemap URL | `https://webatlas.xyz/sitemap.xml` |
+| Property verified | DNS or HTML meta tag |
+
+After a deploy fix, **delete the failed sitemap entry in GSC and re-submit** `sitemap.xml`. Google does not always retry immediately.
+
+**Cloudflare dashboard** (zone `webatlas.xyz`):
+
+1. **Security** → **Bots** → turn **Bot Fight Mode** off, or enable **Allow verified bots** (Googlebot must pass without a JS challenge).
+2. **Security** → **Settings** → set **Security Level** to *Essentially Off* or *Low* for a static marketing site, or add a **Configuration Rule** / **WAF custom rule** to skip challenges when URI Path equals `/sitemap.xml` or `/robots.txt`.
+3. **Security** → **Bots** → if **Managed robots.txt** / **AI Crawl Control** is enabled, it prepends rules to `robots.txt` (visible as `BEGIN Cloudflare Managed content`). This does not block Googlebot from `/sitemap.xml`, but you can disable managed robots if troubleshooting.
+4. **Caching** → **Configuration** → ensure no Page Rule caches an old 404 for `/sitemap.xml`.
+
+Repo safeguards already in place: `public/_headers` sets `Content-Type: application/xml` on `/sitemap.xml`, and `public/_redirects` 301s `/sitemap.xml/` → `/sitemap.xml`.
+
 ## Multilingual / hreflang limitation
 
 WebAtlas uses **client-side i18n** (EN / FR / AR via `LanguageProvider`). All languages share the same URL — there are no separate `/fr/` or `/ar/` routes.
