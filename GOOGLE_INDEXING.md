@@ -1,6 +1,40 @@
 # Google Search Indexing — WebAtlas
 
-This site is a static Next.js export on Cloudflare Pages at **https://webatlas.xyz**. SEO files are generated at build time into `out/`.
+This site is a static Next.js export on Cloudflare Pages at **https://webatlas.xyz** (canonical host). SEO files are generated at build time into `out/`.
+
+## www.webatlas.xyz (live — redirect recommended)
+
+`www.webatlas.xyz` is deployed on Cloudflare Pages and serves the same static site as the apex. Verified live behavior:
+
+| URL | Status | Notes |
+|-----|--------|-------|
+| `https://www.webatlas.xyz/` | **200 OK** | Duplicate homepage — **no 301 to apex** |
+| `https://www.webatlas.xyz/sitemap.xml` | **200 OK** | Same XML as apex; `<loc>` URLs are apex-only |
+| `https://webatlas.xyz/` | **200 OK** | Canonical host |
+| `https://webatlas.xyz/sitemap.xml` | **200 OK** | Submit this URL in GSC |
+
+**Repo safeguards already in place:** every page has `<link rel="canonical" href="https://webatlas.xyz/...">`, `metadataBase` is apex, and `app/sitemap.ts` / `app/robots.ts` emit apex URLs only. Google should consolidate to apex even without a redirect, but a **301 www → apex** is still best practice (avoids split crawl budget and duplicate URL reports).
+
+**`public/_redirects` cannot redirect by hostname** — Cloudflare Pages `_redirects` is path-only. Use a **Cloudflare Redirect Rule** (dashboard) or Bulk Redirects. See [§5D](#d-www--apex-redirect-recommended) below.
+
+**After you add the redirect rule**, confirm:
+
+```bash
+curl.exe -sI https://www.webatlas.xyz/
+# Expected: HTTP/1.1 301 Moved Permanently
+# Location: https://webatlas.xyz/
+```
+
+### GSC: www property?
+
+| Question | Answer |
+|----------|--------|
+| Add `https://www.webatlas.xyz` as a separate URL-prefix property? | **No** — use apex only |
+| Use domain property `sc-domain:webatlas.xyz`? | Optional; covers apex + www + http, but URL prefix `https://webatlas.xyz` is easier to debug |
+| Where to submit `sitemap.xml`? | **Only** on the `https://webatlas.xyz` property |
+| Submit sitemap on www property? | **No** — would duplicate discovery; apex sitemap already lists all canonical URLs |
+
+Once the www → apex 301 is active, requests to `www.webatlas.xyz/*` never serve HTML — GSC on the apex property is sufficient.
 
 ## What the repo provides
 
@@ -119,11 +153,18 @@ In Cloudflare dashboard for `webatlas.xyz`:
 1. **Security** → **Bots** → **AI Crawl Control**
 2. If **Managed robots.txt** is enabled, Cloudflare prepends `BEGIN Cloudflare Managed content` to `robots.txt` — this does not block `/sitemap.xml`, but you can disable it while troubleshooting
 
-#### D. www → apex redirect (recommended)
+#### D. www → apex redirect (recommended — do this now)
+
+`www.webatlas.xyz` is live and currently returns **200** (duplicate). This rule fixes that at the edge; repo `_redirects` cannot match on hostname.
 
 1. **Rules** → **Redirect Rules** → **Create rule**
-2. **When:** Hostname equals `www.webatlas.xyz`
-3. **Then:** Static redirect to `https://webatlas.xyz${uri.path}` with status **301**
+2. **Rule name:** `www to apex`
+3. **When:** Custom filter expression → `(http.host eq "www.webatlas.xyz")`
+4. **Then:** Type **Static**, URL `https://webatlas.xyz${http.request.uri.path}`, Status **301**
+5. **Preserve query string:** enabled (default)
+6. **Deploy** and verify with `curl.exe -sI https://www.webatlas.xyz/` → `301` + `Location: https://webatlas.xyz/`
+
+Also test a subpath: `curl.exe -sI https://www.webatlas.xyz/services/` → `301` → `https://webatlas.xyz/services/`
 
 #### E. Purge cache after deploy
 

@@ -70,12 +70,26 @@ This repo has **no** `wrangler.jsonc`, `open-next.config.ts`, or `@opennextjs/cl
 ## Custom Domain
 
 1. Pages project → **Custom domains** → **Set up a custom domain**
-2. Add `webatlas.xyz` (and `www.webatlas.xyz` if needed)
-3. Cloudflare will configure DNS automatically if the zone is on Cloudflare
+2. Add `webatlas.xyz` (apex — canonical host)
+3. Add `www.webatlas.xyz` if you want the www hostname reachable (DNS is configured automatically when the zone is on Cloudflare)
+4. **Redirect www → apex** via Cloudflare **Redirect Rules** (not `_redirects`):
+
+   | Field | Value |
+   |-------|-------|
+   | When | `(http.host eq "www.webatlas.xyz")` |
+   | Then | Static redirect to `https://webatlas.xyz${http.request.uri.path}`, status **301** |
+
+   Canonical URLs, sitemap, and GSC all use `https://webatlas.xyz`. See [GOOGLE_INDEXING.md](./GOOGLE_INDEXING.md#wwwwebatlasxyz-live--redirect-recommended).
 
 ## Redirects
 
-`/work` → `/` is handled by `public/_redirects` (Cloudflare Pages format). No extra Pages config is required.
+Path redirects in `public/_redirects` (Cloudflare Pages format):
+
+- `/work` → `/` (301)
+- `/sitemap.xml/` → `/sitemap.xml` (301)
+- `/robots.txt/` → `/robots.txt` (301)
+
+Hostname redirects (www → apex) must be configured in the **Cloudflare dashboard** — `_redirects` is path-only.
 
 ## Google Search indexing
 
