@@ -2,8 +2,7 @@
 
 import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-
-const WHATSAPP_NUMBER = '+212624363356'
+import { WHATSAPP_NUMBER, buildWaUrl } from '@/lib/whatsapp'
 
 const QUICK_MESSAGES = [
   { label: 'Custom project', text: "Hi WebAtlas — I have a custom project in mind and want to know if you can build it." },
@@ -25,15 +24,6 @@ function CloseIcon() {
       <path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   )
-}
-
-function phoneToWaId(phone: string): string {
-  return phone.replace(/\D/g, '')
-}
-
-function buildWaUrl(phone: string, message: string): string {
-  const id = phoneToWaId(phone)
-  return `https://wa.me/${id}?text=${encodeURIComponent(message)}`
 }
 
 export default function WhatsAppWidget() {
