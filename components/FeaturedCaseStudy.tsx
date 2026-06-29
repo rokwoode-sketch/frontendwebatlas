@@ -1,10 +1,10 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { Reveal, fadeUp, slideLeft } from '@/components/Animated'
-import { GlassCard } from '@/components/GlassCard'
 import { useLanguage } from '@/lib/i18n/LanguageProvider'
 
 function Arrow() {
@@ -23,7 +23,7 @@ function ExternalArrow() {
   )
 }
 
-/** Premium featured client showcase — NodensCare medical tourism platform */
+/** Featured client showcase — NodensCare medical tourism platform */
 export default function FeaturedCaseStudy() {
   const { t, dir } = useLanguage()
   const cs = t.caseStudy
@@ -36,8 +36,8 @@ export default function FeaturedCaseStudy() {
   const springX = useSpring(mouseX, { stiffness: 120, damping: 22 })
   const springY = useSpring(mouseY, { stiffness: 120, damping: 22 })
 
-  const rotateY = useTransform(springX, [-0.5, 0.5], dir === 'rtl' ? [8, -8] : [-8, 8])
-  const rotateX = useTransform(springY, [-0.5, 0.5], [6, -6])
+  const rotateY = useTransform(springX, [-0.5, 0.5], dir === 'rtl' ? [5, -5] : [-5, 5])
+  const rotateX = useTransform(springY, [-0.5, 0.5], [4, -4])
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const el = containerRef.current
@@ -64,7 +64,7 @@ export default function FeaturedCaseStudy() {
         <div className="flex flex-col items-center text-center gap-4 mb-16">
           <Reveal>
             <span className="label-pill">
-              <span className="w-1.5 h-1.5 rounded-full bg-wa-violet animate-pulse-glow" />
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse-glow" />
               {home.caseStudyLabel}
             </span>
           </Reveal>
@@ -112,6 +112,17 @@ export default function FeaturedCaseStudy() {
               ))}
             </div>
 
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="rounded-xl border border-wa-border bg-bg-raised/60 p-4">
+                <p className="text-[10px] uppercase tracking-widest text-wa-ink-3 mb-1">{c.before}</p>
+                <p className="text-sm text-wa-ink-3">{cs.before}</p>
+              </div>
+              <div className="rounded-xl border border-teal-500/30 bg-teal-500/10 p-4">
+                <p className="text-[10px] uppercase tracking-widest text-teal-300 mb-1">{c.after}</p>
+                <p className="text-sm text-wa-ink">{cs.after}</p>
+              </div>
+            </div>
+
             <div className="flex flex-wrap gap-3">
               <Link href="/contact" className="btn-primary w-fit px-6 py-3">
                 {cs.cta} <Arrow />
@@ -135,116 +146,48 @@ export default function FeaturedCaseStudy() {
               onMouseLeave={handleMouseLeave}
             >
               <motion.div
-                className="absolute -inset-4 rounded-3xl opacity-40 blur-2xl pointer-events-none"
+                className="absolute -inset-6 rounded-3xl opacity-50 blur-3xl pointer-events-none"
                 style={{
-                  background: 'radial-gradient(ellipse at 50% 50%, rgba(20,184,166,0.35), transparent 70%)',
+                  background: 'radial-gradient(ellipse at 50% 50%, rgba(20,184,166,0.28), transparent 70%)',
                   rotateX,
                   rotateY,
                 }}
               />
 
               <motion.div
-                style={{ rotateX, rotateY, transformPerspective: 1200 }}
+                style={{ rotateX, rotateY, transformPerspective: 1400 }}
                 className="relative preserve-3d"
-                aria-hidden="true"
               >
-                <GlassCard accent="#14B8A6" intensity={16} glow className="p-1">
-                  <div className="rounded-[18px] overflow-hidden bg-[#060610] border border-white/5">
-                    <div className="flex items-center gap-2 px-4 py-3 border-b border-white/6 bg-white/[0.03]">
+                <a
+                  href={cs.visitUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block group no-underline case-study-frame"
+                  aria-label={cs.screenshot.alt}
+                >
+                  <div className="case-study-chrome">
+                    <div className="flex gap-1.5">
                       <span className="browser-dot" style={{ background: '#FF5F57' }} />
                       <span className="browser-dot" style={{ background: '#FEBC2E' }} />
                       <span className="browser-dot" style={{ background: '#28C840' }} />
-                      <span className="flex-1 text-[10px] text-wa-ink-3 font-display pl-2">
-                        {cs.mockup.siteBar}
-                      </span>
                     </div>
-
-                    <div className="p-5 md:p-6 min-h-[300px] relative">
-                      <div
-                        aria-hidden="true"
-                        className="absolute inset-0 opacity-30"
-                        style={{
-                          backgroundImage: 'linear-gradient(rgba(20,184,166,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(20,184,166,0.08) 1px, transparent 1px)',
-                          backgroundSize: '24px 24px',
-                        }}
-                      />
-
-                      <motion.div
-                        className="relative z-10 flex flex-col gap-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className="font-display font-bold text-lg text-wa-ink tracking-tight">NODENSCARE</span>
-                          <span className="text-[10px] px-2 py-0.5 rounded-full border border-teal-400/40 text-teal-300">
-                            {cs.mockup.langBadge}
-                          </span>
-                        </div>
-
-                        <div className="h-24 rounded-xl bg-gradient-to-br from-teal-500/20 via-transparent to-wa-gold/10 border border-white/8 flex items-end p-4">
-                          <p className="text-xs text-wa-ink-2 max-w-[220px]">{cs.mockup.banner}</p>
-                        </div>
-
-                        <div className="grid grid-cols-3 gap-2">
-                          {cs.mockup.services.map((s, i) => (
-                            <motion.div
-                              key={s}
-                              className="rounded-lg border border-white/8 bg-bg-raised/80 p-2 text-center"
-                              whileHover={{ scale: 1.04, z: 20 }}
-                            >
-                              <p className="text-[9px] text-wa-ink-3 leading-tight">{s}</p>
-                              <p className="text-[10px] font-semibold text-teal-300 mt-1">
-                                {cs.mockup.prices[i]}
-                              </p>
-                            </motion.div>
-                          ))}
-                        </div>
-
-                        <motion.div
-                          className="rounded-xl py-2.5 text-center text-xs font-semibold text-white"
-                          style={{
-                            background: 'linear-gradient(180deg, #2DD4BF, #14B8A6)',
-                            boxShadow: '0 8px 24px rgba(20,184,166,0.4)',
-                          }}
-                          animate={{ boxShadow: ['0 8px 24px rgba(20,184,166,0.35)', '0 12px 32px rgba(20,184,166,0.55)', '0 8px 24px rgba(20,184,166,0.35)'] }}
-                          transition={{ duration: 3, repeat: Infinity }}
-                        >
-                          {cs.mockup.cta}
-                        </motion.div>
-                      </motion.div>
-
-                      <motion.div
-                        className="absolute -right-2 top-8 z-20 w-36 rounded-xl border border-wa-gold/30 bg-bg-surface/90 backdrop-blur-md p-3 shadow-glow-cyan"
-                        style={{ translateZ: 40 }}
-                        animate={{ y: [0, -8, 0] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                      >
-                        <p className="text-[9px] text-wa-gold uppercase tracking-wider">{c.live}</p>
-                        <p className="font-display font-bold text-lg text-wa-ink">{cs.mockup.liveValue}</p>
-                        <p className="text-[9px] text-wa-ink-3">{cs.mockup.liveLabel}</p>
-                      </motion.div>
+                    <div className="case-study-url">
+                      <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0" />
+                      {cs.screenshot.siteBar}
                     </div>
                   </div>
-                </GlassCard>
-
-                <motion.div
-                  className="mt-4 grid grid-cols-2 gap-3"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-3">
-                    <p className="text-[9px] uppercase tracking-widest text-red-400/80 mb-1">{c.before}</p>
-                    <p className="text-[11px] text-wa-ink-3 leading-relaxed">{cs.before}</p>
+                  <div className="case-study-viewport">
+                    <Image
+                      src="/case-studies/nodenscare-home.png"
+                      alt={cs.screenshot.alt}
+                      width={1440}
+                      height={900}
+                      className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.01]"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      priority
+                    />
                   </div>
-                  <div className="rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-3">
-                    <p className="text-[9px] uppercase tracking-widest text-emerald-400/90 mb-1">{c.after}</p>
-                    <p className="text-[11px] text-wa-ink-2 leading-relaxed">{cs.after}</p>
-                  </div>
-                </motion.div>
+                </a>
               </motion.div>
             </div>
           </Reveal>

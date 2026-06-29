@@ -318,15 +318,9 @@ const contentEn: Omit<Dictionary, 'lang' | 'dir'> = {
     cta: "See how we'd build yours",
     visitUrl: 'https://www.nodenscare.com',
     visitCta: 'View live site',
-    mockup: {
-      banner: 'Begin your free clinical assessment',
-      services: ['Hair Transplant', 'Hollywood Smile', 'Rhinoplasty'],
-      prices: ['€1,500', '€3,200', '€3,500'],
-      cta: 'Free consultation',
-      liveValue: '+18',
-      liveLabel: 'assessments this week',
-      langBadge: 'EN · FR · AR · ES',
-      siteBar: 'nodenscare.com · consultation',
+    screenshot: {
+      alt: 'NodensCare homepage — medical tourism platform connecting international patients with Istanbul specialists',
+      siteBar: 'nodenscare.com',
     },
   },
   about: {

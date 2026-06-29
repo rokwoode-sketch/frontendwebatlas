@@ -210,14 +210,8 @@ export type Dictionary = {
     cta: string
     visitUrl: string
     visitCta: string
-    mockup: {
-      banner: string
-      services: [string, string, string]
-      prices: [string, string, string]
-      cta: string
-      liveValue: string
-      liveLabel: string
-      langBadge: string
+    screenshot: {
+      alt: string
       siteBar: string
     }
   }

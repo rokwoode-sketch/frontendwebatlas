@@ -390,6 +390,53 @@ html, body {
   }
   .mockup-ui { font-family: var(--font-inter), system-ui, sans-serif; }
 
+  /* ─── Case study browser frame ──────────────── */
+  .case-study-frame {
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #040408;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow:
+      0 48px 96px -24px rgba(0, 0, 0, 0.85),
+      0 0 0 1px rgba(20, 184, 166, 0.08),
+      0 0 60px rgba(20, 184, 166, 0.12);
+    transform-style: preserve-3d;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .case-study-frame:hover {
+    border-color: rgba(20, 184, 166, 0.22);
+    box-shadow:
+      0 56px 110px -28px rgba(0, 0, 0, 0.9),
+      0 0 0 1px rgba(20, 184, 166, 0.15),
+      0 0 80px rgba(20, 184, 166, 0.18);
+  }
+  .case-study-chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .case-study-url {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 0.5rem;
+    background: rgba(0, 0, 0, 0.55);
+    font-size: 0.65rem;
+    color: #8B8BA0;
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    letter-spacing: 0.02em;
+  }
+  .case-study-viewport {
+    overflow: hidden;
+    line-height: 0;
+    background: #0a1628;
+  }
+
   /* ─── Ambient orbs ──────────────────────────── */
   .ambient-orb { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(90px); z-index: 0; }
   .ambient-orb-violet { width: 480px; height: 480px; background: radial-gradient(circle, rgba(94,106,210,0.2) 0%, transparent 70%); }

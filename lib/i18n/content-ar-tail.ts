@@ -233,15 +233,9 @@ const contentArTail: Pick<
     cta: 'اكتشف كيف نبني موقعك',
     visitUrl: 'https://www.nodenscare.com',
     visitCta: 'عرض الموقع المباشر',
-    mockup: {
-      banner: 'ابدأ تقييمك السريري المجاني',
-      services: ['زراعة الشعر', 'Hollywood Smile', 'تجميل الأنف'],
-      prices: ['1,500 €', '3,200 €', '3,500 €'],
-      cta: 'استشارة مجانية',
-      liveValue: '+18',
-      liveLabel: 'تقييم هذا الأسبوع',
-      langBadge: 'EN · FR · AR · ES',
-      siteBar: 'nodenscare.com · consultation',
+    screenshot: {
+      alt: 'الصفحة الرئيسية لـ NodensCare — منصة سياحة علاجية تربط المرضى الدوليين بأخصائيي إسطنبول',
+      siteBar: 'nodenscare.com',
     },
   },
   about: {

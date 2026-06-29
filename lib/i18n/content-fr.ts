@@ -318,15 +318,9 @@ const contentFr: Omit<Dictionary, 'lang' | 'dir'> = {
     cta: 'Voir comment on construirait le vôtre',
     visitUrl: 'https://www.nodenscare.com',
     visitCta: 'Voir le site en ligne',
-    mockup: {
-      banner: 'Commencez votre évaluation clinique gratuite',
-      services: ['Greffe de cheveux', 'Hollywood Smile', 'Rhinoplastie'],
-      prices: ['1 500 €', '3 200 €', '3 500 €'],
-      cta: 'Consultation gratuite',
-      liveValue: '+18',
-      liveLabel: 'évaluations cette semaine',
-      langBadge: 'EN · FR · AR · ES',
-      siteBar: 'nodenscare.com · consultation',
+    screenshot: {
+      alt: 'Page d\'accueil NodensCare — plateforme de tourisme médical reliant patients internationaux et spécialistes d\'Istanbul',
+      siteBar: 'nodenscare.com',
     },
   },
   about: {
