@@ -1,9 +1,8 @@
-import type { Metadata } from 'next'
-import { SITE } from '@/lib/seo'
+import { buildPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: 'Blog — Web Design, Booking & Agency Insights',
   description:
     'Practical guides on booking websites, direct riad reservations, multilingual export sites, and web agency pricing for businesses in Morocco and beyond.',
-  alternates: { canonical: `${SITE.url}/blog` },
-}
+  path: '/blog',
+})

@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 export const SITE = {
   name: 'WebAtlas',
   legalName: 'WebAtlas',
@@ -32,6 +34,45 @@ export const SITE = {
   foundingDate: '2024',
   sameAs: [] as string[],
 } as const
+
+/** Public indexable routes (excludes redirects like /work). */
+export const STATIC_SITEMAP_ROUTES = [
+  { path: '/', changeFrequency: 'weekly' as const, priority: 1 },
+  { path: '/services', changeFrequency: 'monthly' as const, priority: 0.9 },
+  { path: '/process', changeFrequency: 'monthly' as const, priority: 0.85 },
+  { path: '/blog', changeFrequency: 'weekly' as const, priority: 0.85 },
+  { path: '/insights', changeFrequency: 'weekly' as const, priority: 0.8 },
+  { path: '/about', changeFrequency: 'monthly' as const, priority: 0.7 },
+  { path: '/contact', changeFrequency: 'monthly' as const, priority: 0.8 },
+]
+
+export function pageUrl(path: string): string {
+  if (path === '/') return SITE.url
+  return `${SITE.url}${path}`
+}
+
+export function buildPageMetadata({
+  title,
+  description,
+  path,
+}: {
+  title: string
+  description: string
+  path: string
+}): Metadata {
+  const url = pageUrl(path)
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'website',
+    },
+  }
+}
 
 export type FaqItem = { q: string; a: string }
 

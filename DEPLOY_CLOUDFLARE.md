@@ -33,6 +33,7 @@ Static Next.js export (`output: 'export'`) — no backend, no database, no API c
 | `NODE_VERSION` | `20` |
 | `NEXT_PUBLIC_SITE_URL` | `https://webatlas.xyz` |
 | `NEXT_PUBLIC_SITE_NAME` | `WebAtlas` |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | *(GSC HTML tag token — see [GOOGLE_INDEXING.md](./GOOGLE_INDEXING.md))* |
 
 No `NEXT_PUBLIC_API_URL` — the frontend has no backend.
 
@@ -75,6 +76,15 @@ This repo has **no** `wrangler.jsonc`, `open-next.config.ts`, or `@opennextjs/cl
 ## Redirects
 
 `/work` → `/` is handled by `public/_redirects` (Cloudflare Pages format). No extra Pages config is required.
+
+## Google Search indexing
+
+See **[GOOGLE_INDEXING.md](./GOOGLE_INDEXING.md)** for:
+
+- Sitemap URL list and GSC setup steps
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` env var
+- Cloudflare bot settings
+- hreflang / i18n limitations
 
 ## Local Build
 

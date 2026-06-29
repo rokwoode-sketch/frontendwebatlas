@@ -16,6 +16,7 @@ export default function Header() {
     { href: '/services', label: t.nav.services },
     { href: '/process', label: t.nav.process },
     { href: '/blog', label: t.nav.blog },
+    { href: '/insights', label: t.nav.insights },
     { href: '/about', label: t.nav.about },
     { href: '/contact', label: t.nav.contact },
   ]
