@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
 import {
-  Reveal, StaggerReveal, Counter, WordReveal,
+  Reveal, StaggerReveal, Counter,
   fadeUp, scaleUp, slideLeft,
 } from '@/components/Animated'
 import { Marquee } from '@/components/Marquee'
@@ -52,18 +52,16 @@ export default function HomePage() {
       {/* HERO */}
       <section
         className="relative min-h-[100dvh] flex flex-col justify-center pt-24 pb-16 overflow-hidden grid-bg perspective-scene"
-        aria-label="Hero"
+        aria-labelledby="hero-heading"
       >
         <HeroScene />
         <div className="section relative z-10 flex flex-col items-start gap-8 max-w-2xl lg:max-w-[52%]">
           <HeroBadge />
-          <h1 className="font-display font-bold leading-[1.05] tracking-tight" style={{ fontSize: 'clamp(2.8rem, 6vw, 5rem)' }}>
-            <WordReveal text={h.heroLine1} className="block text-wa-ink" immediate />
-            <span className="block">
-              <WordReveal text={h.heroLine2} wordClassName="text-gradient" delay={0.2} immediate />
-            </span>
-            <span className="block mt-3" style={{ fontSize: '0.58em', fontWeight: 500 }}>
-              <WordReveal text={h.heroLine3} wordClassName="text-wa-ink-2" className="inline" delay={0.42} immediate />
+          <h1 id="hero-heading" className="font-display font-bold leading-[1.05] tracking-tight" style={{ fontSize: 'clamp(2.8rem, 6vw, 5rem)' }}>
+            <span className="block text-wa-ink">{h.heroLine1}</span>
+            <span className="block text-gradient">{h.heroLine2}</span>
+            <span className="block mt-3 text-wa-ink-2" style={{ fontSize: '0.58em', fontWeight: 500 }}>
+              {h.heroLine3}
             </span>
           </h1>
           <Reveal variants={fadeUp} delay={0.62} immediate>
@@ -125,7 +123,8 @@ export default function HomePage() {
       <ProductShowcase />
       <FeaturedCaseStudy />
 
-      <section className="py-20 depth-section" aria-label="Key figures">
+      <section className="py-20 depth-section" aria-labelledby="stats-heading">
+        <h2 id="stats-heading" className="sr-only">Key figures</h2>
         <div className="section">
           <StaggerReveal className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {h.stats.map(stat => (
@@ -347,11 +346,13 @@ export default function HomePage() {
             {h.clientVoices.map((voice, i) => (
               <motion.div key={voice.role} variants={i % 2 === 0 ? fadeUp : slideLeft}>
                 <GlassCard accent="#5E6AD2" intensity={5} className="h-full p-6 flex flex-col gap-4">
-                  <blockquote className="text-wa-ink-2 text-sm leading-relaxed flex-1 italic">{voice.quote}</blockquote>
-                  <figcaption className="pt-2 border-t border-wa-border/50">
-                    <p className="font-display font-semibold text-sm text-wa-ink">{voice.name}</p>
-                    <p className="text-xs text-wa-ink-3">{voice.role}</p>
-                  </figcaption>
+                  <figure>
+                    <blockquote className="text-wa-ink-2 text-sm leading-relaxed flex-1 italic">{voice.quote}</blockquote>
+                    <figcaption className="pt-2 border-t border-wa-border/50">
+                      <p className="font-display font-semibold text-sm text-wa-ink">{voice.name}</p>
+                      <p className="text-xs text-wa-ink-3">{voice.role}</p>
+                    </figcaption>
+                  </figure>
                 </GlassCard>
               </motion.div>
             ))}

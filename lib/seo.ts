@@ -143,14 +143,14 @@ export const SERVICES = [
 
 export const CASE_STUDIES = [
   {
-    id: 'dramina',
-    name: 'Dramina Wellness Booking — Casablanca',
-    url: '/#case-study-heading',
+    id: 'nodenscare',
+    name: 'NodensCare Medical Tourism Platform — Istanbul',
+    url: 'https://www.nodenscare.com',
     description:
-      'WebAtlas built a premium trilingual booking engine for Dramina wellness studio, increasing online appointments 3.2× and capturing 41% of bookings outside business hours.',
-    industry: 'Wellness & Aesthetics',
-    location: 'Casablanca, Morocco',
-    result: '3.2× online bookings in 11 days',
+      'WebAtlas migrated NodensCare from Wix to a multilingual Cloudflare platform with procedure guides, patient gallery, and WhatsApp lead capture for international medical tourists.',
+    industry: 'Medical Tourism',
+    location: 'Istanbul, Turkey',
+    result: '4 languages · 20+ SEO pages · <2s load',
     datePublished: '2026-06-01',
   },
   {
@@ -409,12 +409,13 @@ export function buildServiceSchema(service: (typeof SERVICES)[number]) {
 }
 
 export function buildCaseStudySchema(study: (typeof CASE_STUDIES)[number]) {
+  const pageUrl = study.url.startsWith('http') ? study.url : `${SITE.url}${study.url}`
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: study.name,
     description: study.description,
-    url: `${SITE.url}${study.url}`,
+    url: pageUrl,
     datePublished: study.datePublished,
     author: { '@id': `${SITE.url}/#organization` },
     publisher: { '@id': `${SITE.url}/#organization` },
@@ -426,7 +427,7 @@ export function buildCaseStudySchema(study: (typeof CASE_STUDIES)[number]) {
       '@type': 'Place',
       name: study.location,
     },
-    mainEntityOfPage: `${SITE.url}${study.url}`,
+    mainEntityOfPage: pageUrl,
   }
 }
 

@@ -55,8 +55,14 @@ export default function ContactPageClient() {
               <p className="text-xs font-semibold text-wa-ink-2 uppercase tracking-wider">{c.projectTypesLabel}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {c.projectTypes.map((item) => (
-                  <a key={item.label} href={buildWaUrl(WHATSAPP_NUMBER, item.message)} target="_blank" rel="noopener noreferrer"
-                    className="card flex items-center justify-between gap-3 py-4 px-5 hover:border-wa-violet transition-colors group">
+                  <a
+                    key={item.label}
+                    href={buildWaUrl(WHATSAPP_NUMBER, item.message)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${item.label} — WhatsApp`}
+                    className="card flex items-center justify-between gap-3 py-4 px-5 hover:border-wa-violet transition-colors group"
+                  >
                     <span className="text-sm text-wa-ink-2 group-hover:text-wa-ink transition-colors">{item.label}</span>
                     <WhatsAppIcon />
                   </a>

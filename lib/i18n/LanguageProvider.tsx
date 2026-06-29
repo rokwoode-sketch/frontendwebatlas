@@ -71,12 +71,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     [lang, t, changeLanguage],
   )
 
-  if (!ready) {
-    return (
-      <div className="min-h-screen bg-bg" aria-busy="true" />
-    )
-  }
-
   return (
     <LanguageContext.Provider value={value}>
       {children}

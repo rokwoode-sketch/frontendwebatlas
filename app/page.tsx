@@ -33,7 +33,7 @@ export default function Page() {
     <>
       <HomePageJsonLd />
       {/* Crawler-visible entity summary for AEO/GEO */}
-      <div className="sr-only seo-hidden" aria-hidden="true">
+      <div className="sr-only seo-hidden">
         <p>
           {SITE.description} Contact: {SITE.email}. Pricing: {SITE.priceRange}.
           Delivery: 10 days. Markets: {SITE.serviceAreas.join(', ')}.

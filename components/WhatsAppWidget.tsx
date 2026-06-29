@@ -36,7 +36,7 @@ export default function WhatsAppWidget() {
   )
 
   return (
-    <div className="wa-widget" aria-label={wa.headline}>
+    <aside className="wa-widget" aria-label={wa.brand}>
       <AnimatePresence>
         {open && (
           <>
@@ -129,6 +129,6 @@ export default function WhatsAppWidget() {
         </span>
         {!open && <span className="wa-widget-trigger-label">{wa.triggerLabel}</span>}
       </motion.button>
-    </div>
+    </aside>
   )
 }

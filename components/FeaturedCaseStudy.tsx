@@ -15,7 +15,15 @@ function Arrow() {
   )
 }
 
-/** Premium featured client showcase — Dramina wellness booking case study */
+function ExternalArrow() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+/** Premium featured client showcase — NodensCare medical tourism platform */
 export default function FeaturedCaseStudy() {
   const { t, dir } = useLanguage()
   const cs = t.caseStudy
@@ -89,8 +97,8 @@ export default function FeaturedCaseStudy() {
                 <p className="text-[10px] uppercase tracking-widest text-wa-ink-3 mb-1">{c.challenge}</p>
                 <p className="text-sm text-wa-ink-2">{cs.challenge}</p>
               </div>
-              <div className="rounded-xl border border-wa-violet/30 bg-wa-violet-m p-4">
-                <p className="text-[10px] uppercase tracking-widest text-wa-violet-l mb-1">{c.solution}</p>
+              <div className="rounded-xl border border-teal-500/30 bg-teal-500/10 p-4">
+                <p className="text-[10px] uppercase tracking-widest text-teal-300 mb-1">{c.solution}</p>
                 <p className="text-sm text-wa-ink">{cs.solution}</p>
               </div>
             </div>
@@ -98,15 +106,25 @@ export default function FeaturedCaseStudy() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {cs.metrics.map((m) => (
                 <div key={m.label} className="text-center p-3 rounded-xl border border-wa-border/80 bg-bg-surface/80">
-                  <p className="font-display font-bold text-2xl text-wa-violet">{m.value}</p>
+                  <p className="font-display font-bold text-2xl text-teal-400">{m.value}</p>
                   <p className="text-[10px] text-wa-ink-3 mt-1 leading-tight">{m.label}</p>
                 </div>
               ))}
             </div>
 
-            <Link href="/contact" className="btn-primary w-fit px-6 py-3">
-              {cs.cta} <Arrow />
-            </Link>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/contact" className="btn-primary w-fit px-6 py-3">
+                {cs.cta} <Arrow />
+              </Link>
+              <a
+                href={cs.visitUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost w-fit px-6 py-3"
+              >
+                {cs.visitCta} <ExternalArrow />
+              </a>
+            </div>
           </Reveal>
 
           <Reveal variants={slideLeft} className="order-1 lg:order-2 perspective-scene">
@@ -116,11 +134,10 @@ export default function FeaturedCaseStudy() {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              {/* Depth layers */}
               <motion.div
                 className="absolute -inset-4 rounded-3xl opacity-40 blur-2xl pointer-events-none"
                 style={{
-                  background: 'radial-gradient(ellipse at 50% 50%, rgba(94,106,210,0.35), transparent 70%)',
+                  background: 'radial-gradient(ellipse at 50% 50%, rgba(20,184,166,0.35), transparent 70%)',
                   rotateX,
                   rotateY,
                 }}
@@ -129,26 +146,25 @@ export default function FeaturedCaseStudy() {
               <motion.div
                 style={{ rotateX, rotateY, transformPerspective: 1200 }}
                 className="relative preserve-3d"
+                aria-hidden="true"
               >
-                <GlassCard accent="#5E6AD2" intensity={16} glow className="p-1">
+                <GlassCard accent="#14B8A6" intensity={16} glow className="p-1">
                   <div className="rounded-[18px] overflow-hidden bg-[#060610] border border-white/5">
-                    {/* Browser chrome */}
                     <div className="flex items-center gap-2 px-4 py-3 border-b border-white/6 bg-white/[0.03]">
                       <span className="browser-dot" style={{ background: '#FF5F57' }} />
                       <span className="browser-dot" style={{ background: '#FEBC2E' }} />
                       <span className="browser-dot" style={{ background: '#28C840' }} />
                       <span className="flex-1 text-[10px] text-wa-ink-3 font-display pl-2">
-                        dramina.ma · booking
+                        {cs.mockup.siteBar}
                       </span>
                     </div>
 
-                    {/* Mock UI */}
                     <div className="p-5 md:p-6 min-h-[300px] relative">
                       <div
                         aria-hidden="true"
                         className="absolute inset-0 opacity-30"
                         style={{
-                          backgroundImage: 'linear-gradient(rgba(94,106,210,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(94,106,210,0.08) 1px, transparent 1px)',
+                          backgroundImage: 'linear-gradient(rgba(20,184,166,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(20,184,166,0.08) 1px, transparent 1px)',
                           backgroundSize: '24px 24px',
                         }}
                       />
@@ -161,12 +177,14 @@ export default function FeaturedCaseStudy() {
                         viewport={{ once: true }}
                       >
                         <div className="flex items-center justify-between">
-                          <span className="font-display font-bold text-lg text-wa-ink tracking-tight">DRAMINA</span>
-                          <span className="text-[10px] px-2 py-0.5 rounded-full border border-wa-violet/40 text-wa-violet-l">FR · AR · EN</span>
+                          <span className="font-display font-bold text-lg text-wa-ink tracking-tight">NODENSCARE</span>
+                          <span className="text-[10px] px-2 py-0.5 rounded-full border border-teal-400/40 text-teal-300">
+                            {cs.mockup.langBadge}
+                          </span>
                         </div>
 
-                        <div className="h-24 rounded-xl bg-gradient-to-br from-wa-violet/20 via-transparent to-wa-gold/10 border border-white/8 flex items-end p-4">
-                          <p className="text-xs text-wa-ink-2 max-w-[200px]">{cs.mockup.banner}</p>
+                        <div className="h-24 rounded-xl bg-gradient-to-br from-teal-500/20 via-transparent to-wa-gold/10 border border-white/8 flex items-end p-4">
+                          <p className="text-xs text-wa-ink-2 max-w-[220px]">{cs.mockup.banner}</p>
                         </div>
 
                         <div className="grid grid-cols-3 gap-2">
@@ -176,9 +194,9 @@ export default function FeaturedCaseStudy() {
                               className="rounded-lg border border-white/8 bg-bg-raised/80 p-2 text-center"
                               whileHover={{ scale: 1.04, z: 20 }}
                             >
-                              <p className="text-[9px] text-wa-ink-3">{s}</p>
-                              <p className="text-[10px] font-semibold text-wa-violet-l mt-1">
-                                {['450', '380', '200'][i]} MAD
+                              <p className="text-[9px] text-wa-ink-3 leading-tight">{s}</p>
+                              <p className="text-[10px] font-semibold text-teal-300 mt-1">
+                                {cs.mockup.prices[i]}
                               </p>
                             </motion.div>
                           ))}
@@ -187,17 +205,16 @@ export default function FeaturedCaseStudy() {
                         <motion.div
                           className="rounded-xl py-2.5 text-center text-xs font-semibold text-white"
                           style={{
-                            background: 'linear-gradient(180deg, #6E7AE0, #5E6AD2)',
-                            boxShadow: '0 8px 24px rgba(94,106,210,0.4)',
+                            background: 'linear-gradient(180deg, #2DD4BF, #14B8A6)',
+                            boxShadow: '0 8px 24px rgba(20,184,166,0.4)',
                           }}
-                          animate={{ boxShadow: ['0 8px 24px rgba(94,106,210,0.35)', '0 12px 32px rgba(94,106,210,0.55)', '0 8px 24px rgba(94,106,210,0.35)'] }}
+                          animate={{ boxShadow: ['0 8px 24px rgba(20,184,166,0.35)', '0 12px 32px rgba(20,184,166,0.55)', '0 8px 24px rgba(20,184,166,0.35)'] }}
                           transition={{ duration: 3, repeat: Infinity }}
                         >
                           {cs.mockup.cta}
                         </motion.div>
                       </motion.div>
 
-                      {/* Floating glass card — parallax layer */}
                       <motion.div
                         className="absolute -right-2 top-8 z-20 w-36 rounded-xl border border-wa-gold/30 bg-bg-surface/90 backdrop-blur-md p-3 shadow-glow-cyan"
                         style={{ translateZ: 40 }}
@@ -205,14 +222,13 @@ export default function FeaturedCaseStudy() {
                         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                       >
                         <p className="text-[9px] text-wa-gold uppercase tracking-wider">{c.live}</p>
-                        <p className="font-display font-bold text-lg text-wa-ink">+24</p>
-                        <p className="text-[9px] text-wa-ink-3">{c.bookingsThisWeek}</p>
+                        <p className="font-display font-bold text-lg text-wa-ink">{cs.mockup.liveValue}</p>
+                        <p className="text-[9px] text-wa-ink-3">{cs.mockup.liveLabel}</p>
                       </motion.div>
                     </div>
                   </div>
                 </GlassCard>
 
-                {/* Before / after strip */}
                 <motion.div
                   className="mt-4 grid grid-cols-2 gap-3"
                   initial={{ opacity: 0, y: 12 }}

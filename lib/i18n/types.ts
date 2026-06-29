@@ -46,6 +46,7 @@ export type Dictionary = {
     freePreviewCta: string
     freePreviewBody: string
     toggleMenu: string
+    skipToMain: string
     locationLine: string
     typicalResult: string
     afterBuild: string
@@ -207,10 +208,17 @@ export type Dictionary = {
     before: string
     after: string
     cta: string
+    visitUrl: string
+    visitCta: string
     mockup: {
       banner: string
       services: [string, string, string]
+      prices: [string, string, string]
       cta: string
+      liveValue: string
+      liveLabel: string
+      langBadge: string
+      siteBar: string
     }
   }
   about: {

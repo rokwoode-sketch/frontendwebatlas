@@ -37,7 +37,7 @@ export default function BlogPostPageClient({ slug }: Props) {
       <BlogPostMeta title={post.title} description={post.excerpt} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <article>
-        <header className="pt-36 pb-12 grid-bg section-mesh relative overflow-hidden">
+        <div className="pt-36 pb-12 grid-bg section-mesh relative overflow-hidden">
           <div className="section relative z-10 max-w-3xl flex flex-col gap-5">
             <nav className="text-sm text-wa-ink-3 flex items-center gap-2 flex-wrap" aria-label="Breadcrumb">
               <Link href="/">{c.home}</Link>
@@ -57,7 +57,7 @@ export default function BlogPostPageClient({ slug }: Props) {
               <span>{post.readTime} {c.minRead}</span>
             </div>
           </div>
-        </header>
+        </div>
 
         <div className="section max-w-3xl pb-24 pt-8">
           <div className="prose-invert">{post.content.map(renderParagraph)}</div>

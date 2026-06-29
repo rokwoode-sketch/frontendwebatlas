@@ -4,6 +4,7 @@ import './globals.css'
 import Providers from '@/components/Providers'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import SkipLink from '@/components/SkipLink'
 import WhatsAppWidget from '@/components/WhatsAppWidget'
 import { GlobalJsonLd } from '@/components/JsonLd'
 import { SITE } from '@/lib/seo'
@@ -68,14 +69,15 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" dir="ltr" suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans antialiased bg-bg text-wa-ink">
         <Providers>
           <GlobalJsonLd />
+          <SkipLink />
           <div className="grain-overlay" aria-hidden="true" />
           <div className="site-vignette" aria-hidden="true" />
           <Header />
-          <main>{children}</main>
+          <main id="main-content" tabIndex={-1}>{children}</main>
           <Footer />
           <WhatsAppWidget />
         </Providers>

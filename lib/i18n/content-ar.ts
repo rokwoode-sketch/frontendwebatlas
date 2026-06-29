@@ -66,6 +66,7 @@ const contentAr: Omit<Dictionary, 'lang' | 'dir'> = {
     freePreviewCta: 'احصل على معاينتك المجانية',
     freePreviewBody: 'أرسل موقعك الحالي. سنراجعه ونُريك معاينة حية لنسخة تركز على التحويل — مجاناً، بلا عقد.',
     toggleMenu: 'فتح القائمة',
+    skipToMain: 'انتقل إلى المحتوى الرئيسي',
     locationLine: 'الدار البيضاء، المغرب · عالمي',
     typicalResult: 'نتيجة نموذجية',
     afterBuild: 'بعد — بناء WebAtlas',

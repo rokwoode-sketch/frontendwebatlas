@@ -16,6 +16,26 @@ html, body {
   white-space: nowrap !important;
   border: 0 !important;
 }
+.skip-link:focus {
+  position: fixed !important;
+  top: 1rem !important;
+  left: 1rem !important;
+  z-index: 100 !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0.5rem 1rem !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  border-radius: 0.5rem !important;
+  background: #5E6AD2 !important;
+  color: #fff !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  outline: 2px solid #A5B4FC !important;
+  outline-offset: 2px !important;
+}
 
 @tailwind base;
 @tailwind components;

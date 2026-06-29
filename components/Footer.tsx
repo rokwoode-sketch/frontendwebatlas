@@ -9,30 +9,39 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   const LINKS = {
-    [t.footer.services]: [
-      { href: '/services#custom', label: t.footer.links.custom },
-      { href: '/services#booking', label: t.footer.links.booking },
-      { href: '/services#leadgen', label: t.footer.links.leadgen },
-      { href: '/services#portal', label: t.footer.links.portal },
-      { href: '/services#catalog', label: t.footer.links.catalog },
-      { href: '/services#multilang', label: t.footer.links.multilang },
-      { href: '/services#ai', label: t.footer.links.ai },
-    ],
-    [t.footer.company]: [
-      { href: '/about', label: t.footer.links.about },
-      { href: '/contact', label: t.footer.links.contact },
-      { href: '/process', label: t.footer.links.process },
-      { href: '/blog', label: t.footer.links.blog },
-      { href: '/insights', label: t.footer.links.insights },
-      { href: '/#faq', label: t.footer.links.faq },
-    ],
-    [t.footer.markets]: [
-      { href: '/services', label: t.footer.links.morocco },
-      { href: '/services', label: t.footer.links.france },
-      { href: '/services', label: t.footer.links.uk },
-      { href: '/services', label: t.footer.links.gulf },
-      { href: '/services', label: t.footer.links.global },
-    ],
+    services: {
+      title: t.footer.services,
+      links: [
+        { href: '/services#custom', label: t.footer.links.custom },
+        { href: '/services#booking', label: t.footer.links.booking },
+        { href: '/services#leadgen', label: t.footer.links.leadgen },
+        { href: '/services#portal', label: t.footer.links.portal },
+        { href: '/services#catalog', label: t.footer.links.catalog },
+        { href: '/services#multilang', label: t.footer.links.multilang },
+        { href: '/services#ai', label: t.footer.links.ai },
+      ],
+    },
+    company: {
+      title: t.footer.company,
+      links: [
+        { href: '/about', label: t.footer.links.about },
+        { href: '/contact', label: t.footer.links.contact },
+        { href: '/process', label: t.footer.links.process },
+        { href: '/blog', label: t.footer.links.blog },
+        { href: '/insights', label: t.footer.links.insights },
+        { href: '/#faq', label: t.footer.links.faq },
+      ],
+    },
+    markets: {
+      title: t.footer.markets,
+      links: [
+        { href: '/services', label: t.footer.links.morocco },
+        { href: '/services', label: t.footer.links.france },
+        { href: '/services', label: t.footer.links.uk },
+        { href: '/services', label: t.footer.links.gulf },
+        { href: '/services', label: t.footer.links.global },
+      ],
+    },
   }
 
   return (
@@ -56,14 +65,14 @@ export default function Footer() {
             </div>
           </div>
 
-          {Object.entries(LINKS).map(([section, links]) => (
-            <div key={section} className="flex flex-col gap-4">
-              <p className="text-xs font-semibold font-display uppercase tracking-widest text-wa-ink-3">
-                {section}
-              </p>
+          {Object.entries(LINKS).map(([key, section]) => (
+            <nav key={key} className="flex flex-col gap-4" aria-labelledby={`footer-${key}-heading`}>
+              <h2 id={`footer-${key}-heading`} className="text-xs font-semibold font-display uppercase tracking-widest text-wa-ink-3">
+                {section.title}
+              </h2>
               <ul className="flex flex-col gap-2.5">
-                {links.map((link) => (
-                  <li key={link.label}>
+                {section.links.map((link) => (
+                  <li key={`${key}-${link.label}`}>
                     <Link
                       href={link.href}
                       className="text-sm text-wa-ink-2 hover:text-wa-ink transition-colors"
@@ -73,7 +82,7 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
 
