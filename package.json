@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/verify-seo-output.mjs",
+    "postbuild": "node scripts/sync-seo-assets.mjs",
     "start": "next start -H 0.0.0.0 -p ${PORT:-3000}"
   },
   "dependencies": {
