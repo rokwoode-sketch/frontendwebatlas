@@ -3,12 +3,7 @@
 import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { WHATSAPP_NUMBER, buildWaUrl } from '@/lib/whatsapp'
-
-const QUICK_MESSAGES = [
-  { label: 'Custom project', text: "Hi WebAtlas — I have a custom project in mind and want to know if you can build it." },
-  { label: 'Free site audit', text: "Hi WebAtlas — I'd like a free audit of my current website." },
-  { label: 'Get a quote', text: "Hi WebAtlas — I'd like a quote for something I want built." },
-] as const
+import { useLanguage } from '@/lib/i18n/LanguageProvider'
 
 function WhatsAppIcon({ size = 22 }: { size?: number }) {
   return (
@@ -27,8 +22,9 @@ function CloseIcon() {
 }
 
 export default function WhatsAppWidget() {
+  const { t } = useLanguage()
+  const wa = t.wa
   const [open, setOpen] = useState(false)
-  // Always use the canonical number — EasyPanel env must not override with a stale value
   const phone = WHATSAPP_NUMBER
 
   const openChat = useCallback(
@@ -40,14 +36,14 @@ export default function WhatsAppWidget() {
   )
 
   return (
-    <div className="wa-widget" aria-label="WhatsApp contact">
+    <div className="wa-widget" aria-label={wa.headline}>
       <AnimatePresence>
         {open && (
           <>
             <motion.button
               type="button"
               className="wa-widget-backdrop"
-              aria-label="Close WhatsApp panel"
+              aria-label={wa.closeAria}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -70,16 +66,16 @@ export default function WhatsAppWidget() {
                   <WhatsAppIcon size={20} />
                 </div>
                 <div className="wa-widget-header-text">
-                  <p id="wa-widget-title" className="wa-widget-brand">WebAtlas Studio</p>
+                  <p id="wa-widget-title" className="wa-widget-brand">{wa.brand}</p>
                   <p className="wa-widget-status">
                     <span className="wa-widget-status-dot" aria-hidden="true" />
-                    Typically replies within 4 hours
+                    {wa.status}
                   </p>
                 </div>
                 <button
                   type="button"
                   className="wa-widget-close"
-                  aria-label="Close"
+                  aria-label={wa.closeAria}
                   onClick={() => setOpen(false)}
                 >
                   <CloseIcon />
@@ -87,18 +83,16 @@ export default function WhatsAppWidget() {
               </header>
 
               <div className="wa-widget-body">
-                <p className="wa-widget-headline">Need a site that actually converts?</p>
-                <p className="wa-widget-sub">
-                  Tell us what you want built — anything from a booking flow to a full custom platform. We&apos;ll respond on WhatsApp.
-                </p>
+                <p className="wa-widget-headline">{wa.headline}</p>
+                <p className="wa-widget-sub">{wa.sub}</p>
 
                 <div className="wa-widget-chips">
-                  {QUICK_MESSAGES.map((item) => (
+                  {wa.quickMessages.map((item) => (
                     <button
                       key={item.label}
                       type="button"
                       className="wa-widget-chip"
-                      onClick={() => openChat(item.text)}
+                      onClick={() => openChat(item.message)}
                     >
                       {item.label}
                     </button>
@@ -108,10 +102,10 @@ export default function WhatsAppWidget() {
                 <button
                   type="button"
                   className="wa-widget-cta"
-                  onClick={() => openChat("Hi WebAtlas — I'm interested in a new website project.")}
+                  onClick={() => openChat(wa.defaultMessage)}
                 >
                   <WhatsAppIcon size={18} />
-                  Start a conversation
+                  {wa.cta}
                 </button>
               </div>
             </motion.div>
@@ -122,7 +116,7 @@ export default function WhatsAppWidget() {
       <motion.button
         type="button"
         className="wa-widget-trigger"
-        aria-label={open ? 'Close WhatsApp' : 'Open WhatsApp chat'}
+        aria-label={open ? wa.closeAria : wa.openAria}
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
         whileHover={{ scale: 1.04 }}
@@ -133,7 +127,7 @@ export default function WhatsAppWidget() {
         <span className="wa-widget-trigger-inner">
           {open ? <CloseIcon /> : <WhatsAppIcon size={24} />}
         </span>
-        {!open && <span className="wa-widget-trigger-label">Chat</span>}
+        {!open && <span className="wa-widget-trigger-label">{wa.triggerLabel}</span>}
       </motion.button>
     </div>
   )

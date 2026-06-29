@@ -4,7 +4,7 @@ export const SITE = {
   url: 'https://webatlas.xyz',
   email: 'hello@webatlas.xyz',
   locale: 'en_US',
-  languages: ['en', 'fr'],
+  languages: ['en', 'fr', 'ar'],
   description:
     'WebAtlas is a functional web studio in Casablanca, Morocco. We build custom websites and web applications for any business need — booking engines, portals, marketplaces, dashboards, and more — delivered in days, 100% remote, from $800.',
   tagline: 'Websites that close deals. Not just for show.',
@@ -142,6 +142,17 @@ export const SERVICES = [
 ] as const
 
 export const CASE_STUDIES = [
+  {
+    id: 'dramina',
+    name: 'Dramina Wellness Booking — Casablanca',
+    url: '/#case-study-heading',
+    description:
+      'WebAtlas built a premium trilingual booking engine for Dramina wellness studio, increasing online appointments 3.2× and capturing 41% of bookings outside business hours.',
+    industry: 'Wellness & Aesthetics',
+    location: 'Casablanca, Morocco',
+    result: '3.2× online bookings in 11 days',
+    datePublished: '2026-06-01',
+  },
   {
     id: 'clinic',
     name: 'Aesthetic Clinic Booking Engine — Casablanca',
@@ -351,7 +362,7 @@ export function buildWebSiteSchema() {
     url: SITE.url,
     description: SITE.description,
     publisher: { '@id': `${SITE.url}/#organization` },
-    inLanguage: ['en', 'fr'],
+    inLanguage: ['en', 'fr', 'ar'],
     potentialAction: {
       '@type': 'SearchAction',
       target: `${SITE.url}/services?q={search_term_string}`,

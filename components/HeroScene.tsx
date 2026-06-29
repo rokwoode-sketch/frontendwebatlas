@@ -2,20 +2,19 @@
 
 import { motion } from 'framer-motion'
 import { BookingMockup } from '@/components/ProductMockups'
+import { useLanguage } from '@/lib/i18n/LanguageProvider'
 
 /** Futuristic 3D hero backdrop — perspective grid + floating product panel */
 export default function HeroScene() {
+  const { t } = useLanguage()
+
   return (
     <div className="hero-scene" aria-hidden="true">
-      {/* Perspective grid floor */}
       <div className="hero-grid-floor" />
-
-      {/* Depth orbs */}
       <div className="hero-orb hero-orb-1" />
       <div className="hero-orb hero-orb-2" />
       <div className="hero-orb hero-orb-3" />
 
-      {/* Floating 3D product panel */}
       <motion.div
         className="hero-float-panel"
         initial={{ opacity: 0, y: 40, rotateX: 18, rotateY: -14 }}
@@ -37,7 +36,7 @@ export default function HeroScene() {
           <span className="hero-float-dot" style={{ background: '#FF5F57' }} />
           <span className="hero-float-dot" style={{ background: '#FEBC2E' }} />
           <span className="hero-float-dot" style={{ background: '#28C840' }} />
-          <span className="hero-float-url">webatlas.xyz · booking engine</span>
+          <span className="hero-float-url">{t.mockups.heroFloatUrl}</span>
         </div>
         <div className="hero-float-body">
           <BookingMockup accent="#5E6AD2" />

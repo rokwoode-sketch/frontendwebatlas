@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
+import Providers from '@/components/Providers'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import WhatsAppWidget from '@/components/WhatsAppWidget'
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    alternateLocale: ['fr_FR'],
+    alternateLocale: ['fr_FR', 'ar_MA'],
     url: SITE.url,
     siteName: 'WebAtlas',
     title: 'WebAtlas — Websites That Close Deals',
@@ -69,13 +70,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans antialiased bg-bg text-wa-ink">
-        <GlobalJsonLd />
-        {/* Film grain overlay — adds depth to the dark background */}
-        <div className="grain-overlay" aria-hidden="true" />
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppWidget />
+        <Providers>
+          <GlobalJsonLd />
+          <div className="grain-overlay" aria-hidden="true" />
+          <div className="site-vignette" aria-hidden="true" />
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <WhatsAppWidget />
+        </Providers>
       </body>
     </html>
   )
