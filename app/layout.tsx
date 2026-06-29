@@ -7,7 +7,7 @@ import Footer from '@/components/Footer'
 import SkipLink from '@/components/SkipLink'
 import WhatsAppWidget from '@/components/WhatsAppWidget'
 import { GlobalJsonLd } from '@/components/JsonLd'
-import { SITE } from '@/lib/seo'
+import { SITE, pageUrl } from '@/lib/seo'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'WebAtlas', url: SITE.url }],
   creator: 'WebAtlas',
-  alternates: { canonical: SITE.url },
+  alternates: { canonical: pageUrl('/') },
   other: {
     'geo.region': 'MA-06',
     'geo.placename': 'Casablanca',

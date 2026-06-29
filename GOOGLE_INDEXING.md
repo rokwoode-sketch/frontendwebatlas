@@ -60,11 +60,13 @@ This site is a static Next.js export on Cloudflare Pages at **https://webatlas.x
 
 ### 3. Submit the sitemap
 
+Use the **URL prefix** property `https://webatlas.xyz`, not `www.webatlas.xyz` (www has no DNS record).
+
 1. In GSC, open **Sitemaps** (left sidebar)
-2. Enter: `sitemap.xml`
+2. Enter: `sitemap.xml` (not `sitemap.xml/`)
 3. Click **Submit**
 
-Full URL: `https://webatlas.xyz/sitemap.xml`
+Full URL: `https://webatlas.xyz/sitemap.xml` — no trailing slash on the sitemap file itself.
 
 ### 4. Request indexing for key pages (optional)
 

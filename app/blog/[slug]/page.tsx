@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { getAllSlugs, getPostBySlug } from '@/lib/blog'
-import { SITE } from '@/lib/seo'
+import { pageUrl } from '@/lib/seo'
 import BlogPostPageClient from '@/components/pages/BlogPostPage'
 
 type Props = { params: { slug: string } }
@@ -15,7 +15,7 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: `${SITE.url}/blog/${post.slug}` },
+    alternates: { canonical: pageUrl(`/blog/${post.slug}`) },
   }
 }
 

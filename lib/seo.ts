@@ -46,9 +46,11 @@ export const STATIC_SITEMAP_ROUTES = [
   { path: '/contact', changeFrequency: 'monthly' as const, priority: 0.8 },
 ]
 
+/** Canonical URL for a route (matches `trailingSlash: true` in next.config). */
 export function pageUrl(path: string): string {
-  if (path === '/') return SITE.url
-  return `${SITE.url}${path}`
+  if (path === '/') return `${SITE.url}/`
+  const normalized = path.startsWith('/') ? path : `/${path}`
+  return `${SITE.url}${normalized}${normalized.endsWith('/') ? '' : '/'}`
 }
 
 export function buildPageMetadata({

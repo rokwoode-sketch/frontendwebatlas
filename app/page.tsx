@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import HomePage from '@/components/HomePage'
 import { HomePageJsonLd } from '@/components/JsonLd'
-import { SITE } from '@/lib/seo'
+import { SITE, pageUrl } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'WebAtlas — Booking Systems & Lead Engines | Casablanca Web Studio',
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     'client portal development',
     'webatlas',
   ],
-  alternates: { canonical: SITE.url },
+  alternates: { canonical: pageUrl('/') },
   openGraph: {
     title: 'WebAtlas — Websites That Close Deals',
     description: SITE.tagline,
-    url: SITE.url,
+    url: pageUrl('/'),
     type: 'website',
   },
 }
