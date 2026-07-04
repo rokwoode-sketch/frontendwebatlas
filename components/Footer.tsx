@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Logo } from './Logo'
 import { useLanguage } from '@/lib/i18n/LanguageProvider'
+import { SITE } from '@/lib/seo'
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -55,12 +56,8 @@ export default function Footer() {
               {t.footer.tagline}
             </p>
             <div className="flex flex-col gap-1.5 text-sm">
-              <a
-                href="mailto:hello@webatlas.xyz"
-                className="text-wa-ink-2 hover:text-wa-violet-l transition-colors"
-              >
-                hello@webatlas.xyz
-              </a>
+              {/* Plain text — no mailto (Cloudflare email-protection creates /cdn-cgi/ 404s for Google) */}
+              <span className="text-wa-ink-2 select-all">{SITE.email}</span>
               <span className="text-wa-ink-3 text-xs">{t.footer.location}</span>
             </div>
           </div>

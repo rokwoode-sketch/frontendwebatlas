@@ -7,12 +7,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'Googlebot',
         allow: '/',
-        disallow: ['/_next/'],
+        // /_next/ = build assets; /cdn-cgi/ = Cloudflare email-protection (404 if crawled)
+        disallow: ['/_next/', '/cdn-cgi/'],
       },
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/_next/'],
+        disallow: ['/_next/', '/cdn-cgi/'],
       },
       {
         userAgent: 'GPTBot',

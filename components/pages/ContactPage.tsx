@@ -90,7 +90,7 @@ export default function ContactPageClient() {
                 <WhatsAppIcon size={14} />
                 WhatsApp: {WHATSAPP_NUMBER}
               </a>
-              <a href="mailto:hello@webatlas.xyz" className="text-sm text-wa-ink-2 hover:text-wa-violet-l transition-colors">hello@webatlas.xyz</a>
+              <span className="text-sm text-wa-ink-2 select-all">hello@webatlas.xyz</span>
               <p className="text-wa-ink-3 text-xs">{t.footer.location}</p>
               <p className="text-wa-ink-3 text-xs">{c.hours}</p>
             </div>
