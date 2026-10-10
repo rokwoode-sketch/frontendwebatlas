@@ -9,6 +9,7 @@ import {
   SERVICES,
   type FaqItem,
 } from '@/lib/seo'
+import { buildShowcaseImageSchemas } from '@/lib/showcase'
 
 type JsonLdProps = { data: Record<string, unknown> | Record<string, unknown>[] }
 
@@ -44,6 +45,7 @@ export function HomePageJsonLd() {
       data={[
         buildFaqSchema(FAQS),
         buildSpeakableSchema(),
+        ...buildShowcaseImageSchemas(),
       ]}
     />
   )

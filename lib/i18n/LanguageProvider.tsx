@@ -11,7 +11,7 @@ import {
 import type { Dictionary, Locale } from './types'
 import { getDictionary, loadDictionary, LOCALES } from './index'
 
-const STORAGE_KEY = 'wa_lang'
+const STORAGE_KEY = 'wa_lang_v2'
 
 type LanguageContextValue = {
   lang: Locale
@@ -24,17 +24,19 @@ type LanguageContextValue = {
 const LanguageContext = createContext<LanguageContextValue | null>(null)
 
 function detectInitialLang(): Locale {
-  if (typeof window === 'undefined') return 'en'
+  if (typeof window === 'undefined') return 'ar'
   const saved = localStorage.getItem(STORAGE_KEY) as Locale | null
   if (saved && LOCALES.includes(saved)) return saved
   const browser = navigator.language?.slice(0, 2).toLowerCase()
-  if (browser === 'fr' || browser === 'ar') return browser
-  return 'en'
+  if (browser === 'ar') return 'ar'
+  if (browser === 'fr') return 'fr'
+  if (browser === 'en') return 'en'
+  return 'ar'
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Locale>('en')
-  const [t, setT] = useState<Dictionary>(getDictionary('en'))
+  const [lang, setLang] = useState<Locale>('ar')
+  const [t, setT] = useState<Dictionary>(getDictionary('ar'))
   const [ready, setReady] = useState(false)
 
   useEffect(() => {

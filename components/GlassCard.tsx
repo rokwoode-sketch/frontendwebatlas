@@ -17,7 +17,7 @@ export function GlassCard({
   children,
   className = '',
   style,
-  accent = '#5E6AD2',
+  accent = '#0F172A',
   intensity = 12,
   glow = true,
   as = 'div',

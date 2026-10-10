@@ -4,7 +4,7 @@ import { useLanguage } from '@/lib/i18n/LanguageProvider'
 
 type MockupProps = { accent?: string }
 
-export function BookingMockup({ accent = '#5E6AD2' }: MockupProps) {
+export function BookingMockup({ accent = '#0F172A' }: MockupProps) {
   const { t } = useLanguage()
   const m = t.mockups.booking
   const slots = ['09:00', '10:30', '14:00', '16:30']

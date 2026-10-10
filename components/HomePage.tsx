@@ -15,6 +15,7 @@ import HeroBadge from '@/components/HeroBadge'
 import { GlassCard } from '@/components/GlassCard'
 import PageMeta from '@/components/PageMeta'
 import { useLanguage } from '@/lib/i18n/LanguageProvider'
+import { WHATSAPP_NUMBER, buildWaUrl } from '@/lib/whatsapp'
 
 function Arrow({ size = 14 }: { size?: number }) {
   return (
@@ -26,7 +27,7 @@ function Arrow({ size = 14 }: { size?: number }) {
 function Check() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <path d="M2.5 7.5l3 3L11.5 4" stroke="#A5B4FC" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2.5 7.5l3 3L11.5 4" stroke="#0F172A" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -42,9 +43,10 @@ function SLabel({ children }: { children: React.ReactNode }) {
 
 export default function HomePage() {
   const processRef = useRef<HTMLDivElement>(null)
-  const { t } = useLanguage()
+  const { t, dir } = useLanguage()
   const h = t.home
   const c = t.common
+  const waUrl = buildWaUrl(WHATSAPP_NUMBER, t.wa.defaultMessage)
 
   return (
     <>
@@ -55,9 +57,9 @@ export default function HomePage() {
         aria-labelledby="hero-heading"
       >
         <HeroScene />
-        <div className="section relative z-10 flex flex-col items-start gap-8 max-w-2xl lg:max-w-[52%]">
+        <div className={`section relative z-10 flex flex-col gap-8 max-w-2xl lg:max-w-[52%] ${dir === 'rtl' ? 'items-start text-right' : 'items-start'}`}>
           <HeroBadge />
-          <h1 id="hero-heading" className="font-display font-bold leading-[1.05] tracking-tight" style={{ fontSize: 'clamp(2.8rem, 6vw, 5rem)' }}>
+          <h1 id="hero-heading" className="font-display font-bold leading-[1.08] tracking-tight" style={{ fontSize: 'clamp(2.6rem, 7vw, 5.5rem)' }}>
             <span className="block text-wa-ink">{h.heroLine1}</span>
             <span className="block text-gradient">{h.heroLine2}</span>
             <span className="block mt-3 text-wa-ink-2" style={{ fontSize: '0.58em', fontWeight: 500 }}>
@@ -74,7 +76,9 @@ export default function HomePage() {
           <Reveal variants={scaleUp} delay={0.76} immediate>
             <div className="flex flex-col sm:flex-row gap-3">
               <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 340, damping: 20 }}>
-                <Link href="/contact" className="btn-primary px-8 py-3.5 text-base">{h.heroCta1} <Arrow /></Link>
+                <a href={waUrl} target="_blank" rel="noopener noreferrer" className="btn-primary px-8 py-3.5 text-base">
+                  {h.heroCta1} <Arrow />
+                </a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <Link href="/services" className="btn-ghost px-8 py-3.5 text-base">{h.heroCta2}</Link>
@@ -109,7 +113,7 @@ export default function HomePage() {
           <StaggerReveal className="grid grid-cols-2 lg:grid-cols-4 gap-4" stagger={0.08}>
             {h.standards.map(s => (
               <motion.div key={s.label} variants={scaleUp}>
-                <GlassCard accent="#5E6AD2" intensity={6} className="h-full p-6 flex flex-col gap-3 text-center">
+                <GlassCard accent="#0F172A" intensity={6} className="h-full p-6 flex flex-col gap-3 text-center">
                   <p className="font-display font-bold text-3xl md:text-4xl text-wa-violet tracking-tight">{s.metric}</p>
                   <p className="font-display font-semibold text-sm text-wa-ink">{s.label}</p>
                   <p className="text-wa-ink-3 text-xs leading-relaxed">{s.detail}</p>
@@ -129,7 +133,7 @@ export default function HomePage() {
           <StaggerReveal className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {h.stats.map(stat => (
               <motion.div key={stat.l} variants={fadeUp}>
-                <GlassCard accent="#5E6AD2" intensity={5} className="flex flex-col items-center justify-center text-center py-10 px-5">
+                <GlassCard accent="#0F172A" intensity={5} className="flex flex-col items-center justify-center text-center py-10 px-5">
                   <p className="font-display font-bold leading-none tracking-tight" style={{ fontSize: 'clamp(2.6rem, 5vw, 3.8rem)' }}>
                     <Counter to={stat.v} /><span className="text-wa-violet">{stat.s}</span>
                     {stat.u && <span className="text-wa-ink-3 text-xl ml-1.5">{stat.u}</span>}
@@ -156,7 +160,7 @@ export default function HomePage() {
           <StaggerReveal className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {h.pains.map(p => (
               <motion.div key={p.n} variants={fadeUp}>
-                <GlassCard className="p-6 h-full flex flex-col gap-4" accent="#5E6AD2" intensity={7}>
+                <GlassCard className="p-6 h-full flex flex-col gap-4" accent="#0F172A" intensity={7}>
                   <span className="font-display font-bold text-3xl text-wa-border">{p.n}</span>
                   <h3 className="font-display font-semibold text-base leading-snug text-wa-ink">{p.title}</h3>
                   <p className="text-wa-ink-2 text-sm leading-relaxed">{p.body}</p>
@@ -177,7 +181,7 @@ export default function HomePage() {
           <StaggerReveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
             {h.services.map(s => (
               <motion.div key={s.id} variants={scaleUp}>
-                <GlassCard accent={s.hot ? '#5E6AD2' : '#52525B'} intensity={6} className="h-full">
+                <GlassCard accent={s.hot ? '#0F172A' : '#94A3B8'} intensity={6} className="h-full">
                   <Link href={`/services#${s.id}`} className="h-full flex flex-col gap-4 no-underline block p-6">
                     <div className="flex items-start justify-between gap-2">
                       <h3 className="font-display font-semibold text-base text-wa-ink">{s.title}</h3>
@@ -208,7 +212,7 @@ export default function HomePage() {
           <StaggerReveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
             {h.deliverables.map((d, i) => (
               <motion.div key={d.title} variants={fadeUp}>
-                <GlassCard accent="#5E6AD2" intensity={6} className="h-full p-6 flex flex-col gap-3">
+                <GlassCard accent="#0F172A" intensity={6} className="h-full p-6 flex flex-col gap-3">
                   <span className="font-display font-bold text-xs text-wa-violet">0{i + 1}</span>
                   <h3 className="font-display font-semibold text-base text-wa-ink">{d.title}</h3>
                   <p className="text-wa-ink-2 text-sm leading-relaxed flex-1">{d.body}</p>
@@ -250,7 +254,7 @@ export default function HomePage() {
           <StaggerReveal className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5" stagger={0.08}>
             {h.investment.map(tier => (
               <motion.div key={tier.tier} variants={fadeUp}>
-                <GlassCard accent="#5E6AD2" intensity={7} className="h-full p-6 flex flex-col gap-5">
+                <GlassCard accent="#0F172A" intensity={7} className="h-full p-6 flex flex-col gap-5">
                   <div>
                     <h3 className="font-display font-semibold text-lg text-wa-ink">{tier.tier}</h3>
                     <p className="font-display font-bold text-2xl text-wa-violet mt-2">{tier.range}</p>
@@ -281,7 +285,7 @@ export default function HomePage() {
             <StaggerReveal className="grid grid-cols-1 md:grid-cols-4 gap-8" stagger={0.13} delay={0.15}>
               {h.steps.map(step => (
                 <motion.div key={step.n} variants={fadeUp} className="flex flex-col gap-4 text-center items-center">
-                  <motion.div className="w-[52px] h-[52px] rounded-full border border-wa-violet flex items-center justify-center relative z-10" style={{ background: 'rgba(94,106,210,0.1)' }}>
+                  <motion.div className="w-[52px] h-[52px] rounded-full border border-wa-violet flex items-center justify-center relative z-10" style={{ background: 'rgba(15,23,42,0.06)' }}>
                     <span className="font-display font-bold text-sm text-wa-violet-l">{step.n}</span>
                   </motion.div>
                   <span className="text-xs font-semibold text-wa-gold">{step.sub}</span>
@@ -326,7 +330,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 ))}
-                <div className="mt-2 p-4 rounded-xl" style={{ background: 'rgba(56,189,248,0.07)', border: '1px solid rgba(56,189,248,0.2)' }}>
+                <div className="mt-2 p-4 rounded-xl" style={{ background: 'rgba(15,23,42,0.04)', border: '1px solid rgba(15,23,42,0.1)' }}>
                   <p className="text-wa-gold text-xs font-semibold">{h.previewNote}</p>
                 </div>
               </div>
@@ -345,7 +349,7 @@ export default function HomePage() {
           <StaggerReveal className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {h.clientVoices.map((voice, i) => (
               <motion.div key={voice.role} variants={i % 2 === 0 ? fadeUp : slideLeft}>
-                <GlassCard accent="#5E6AD2" intensity={5} className="h-full p-6 flex flex-col gap-4">
+                <GlassCard accent="#0F172A" intensity={5} className="h-full p-6 flex flex-col gap-4">
                   <figure>
                     <blockquote className="text-wa-ink-2 text-sm leading-relaxed flex-1 italic">{voice.quote}</blockquote>
                     <figcaption className="pt-2 border-t border-wa-border/50">
@@ -431,7 +435,9 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.2}><p className="text-wa-ink-2 text-lg max-w-md leading-relaxed">{h.ctaBody}</p></Reveal>
           <Reveal variants={scaleUp} delay={0.3}>
-            <Link href="/contact" className="btn-primary px-10 py-4 text-base">{h.ctaButton} <Arrow /></Link>
+            <a href={waUrl} target="_blank" rel="noopener noreferrer" className="btn-primary px-10 py-4 text-base">
+              {h.ctaButton} <Arrow />
+            </a>
           </Reveal>
           <Reveal delay={0.42}><p className="text-wa-ink-3 text-xs">{h.ctaFootnote}</p></Reveal>
         </div>

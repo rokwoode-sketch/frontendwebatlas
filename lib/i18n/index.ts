@@ -5,12 +5,12 @@ import ar from './ar'
 
 export type { Dictionary, Locale }
 
-export const LOCALES: Locale[] = ['en', 'fr', 'ar']
+export const LOCALES: Locale[] = ['ar', 'en', 'fr']
 
 export const LOCALE_LABELS: Record<Locale, { label: string; flag: string }> = {
+  ar: { label: 'AR', flag: '🇦🇪' },
   en: { label: 'EN', flag: '🇬🇧' },
   fr: { label: 'FR', flag: '🇫🇷' },
-  ar: { label: 'AR', flag: '🇸🇦' },
 }
 
 const dictionaries: Record<Locale, Dictionary> = { en, fr, ar }

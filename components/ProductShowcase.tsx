@@ -47,8 +47,8 @@ export default function ProductShowcase({ showHeader = true }: ProductShowcasePr
                 onClick={() => setActive(i)}
                 className="px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200"
                 style={{
-                  background: i === active ? 'rgba(94,106,210,0.14)' : 'rgba(255,255,255,0.04)',
-                  border: i === active ? '1px solid rgba(94,106,210,0.4)' : '1px solid rgba(255,255,255,0.08)',
+                  background: i === active ? 'rgba(15,23,42,0.06)' : 'rgba(15,23,42,0.02)',
+                  border: i === active ? '1px solid rgba(15,23,42,0.2)' : '1px solid rgba(15,23,42,0.08)',
                   color: i === active ? '#FAFAFA' : '#71717A',
                 }}
               >
@@ -69,7 +69,7 @@ export default function ProductShowcase({ showHeader = true }: ProductShowcasePr
               transition={{ duration: 0.28 }}
               className="max-w-3xl mx-auto"
             >
-              <GlassCard accent="#5E6AD2" intensity={8} className="p-8 md:p-10">
+              <GlassCard accent="#0F172A" intensity={8} className="p-8 md:p-10">
                 <span className="text-xs font-semibold uppercase tracking-widest text-wa-violet-l">
                   {product.industry}
                 </span>

@@ -5,11 +5,13 @@ import { useState, useEffect } from 'react'
 import { Logo } from './Logo'
 import LanguageSwitcher from './LanguageSwitcher'
 import { useLanguage } from '@/lib/i18n/LanguageProvider'
+import { WHATSAPP_NUMBER, buildWaUrl } from '@/lib/whatsapp'
 
 export default function Header() {
   const { t, dir } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const waUrl = buildWaUrl(WHATSAPP_NUMBER, t.wa.defaultMessage)
 
   const NAV_LINKS = [
     { href: '/#products', label: t.nav.products },
@@ -49,12 +51,12 @@ export default function Header() {
 
         <div className={`hidden md:flex items-center gap-3 ${dir === 'rtl' ? 'flex-row-reverse' : ''}`}>
           <LanguageSwitcher />
-          <Link href="/contact" className="btn-primary text-sm">
+          <a href={waUrl} target="_blank" rel="noopener noreferrer" className="btn-primary text-sm">
             {t.nav.cta}
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </Link>
+          </a>
         </div>
 
         <div className={`md:hidden flex items-center gap-2 ${dir === 'rtl' ? 'flex-row-reverse' : ''}`}>
@@ -85,13 +87,15 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/contact"
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary mt-2 justify-center"
               onClick={() => setOpen(false)}
             >
               {t.nav.cta}
-            </Link>
+            </a>
           </nav>
         </div>
       )}

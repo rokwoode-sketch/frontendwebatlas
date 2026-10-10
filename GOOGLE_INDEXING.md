@@ -96,11 +96,24 @@ Once the www → apex 301 is active, requests to `www.webatlas.xyz/*` never serv
 
 Use the **URL prefix** property `https://webatlas.xyz`, not `www.webatlas.xyz`.
 
-1. In GSC, confirm the property selector (top-left) shows **`https://webatlas.xyz`** — not `https://www.webatlas.xyz`, not `sc-domain:webatlas.xyz` unless you intentionally use a domain property.
-2. Open **Sitemaps** (left sidebar)
+#### Why GSC says `sitemap.xml` is "invalid" or "Impossible de récupérer"
+
+| GSC message (FR) | English | Most likely cause for webatlas.xyz |
+|------------------|---------|-----------------------------------|
+| **Impossible de récupérer le sitemap** | Couldn't fetch | Cloudflare Bot Fight challenged **real** Google IPs at submit time (curl with fake Googlebot UA can still show 200) |
+| **Sitemap non valide** / invalid on submit | Invalid URL format | Entering `https://webatlas.xyz/sitemap.xml` on a **URL prefix** property (double URL), or `sitemap.xml/` with trailing slash |
+| Pending forever | — | Old failed row not deleted; GSC does not always retry |
+
+The sitemap XML itself is valid (12 URLs, `Content-Type: text/xml`). DNS verification is live (`google-site-verification=…` TXT on `webatlas.xyz`). No code change required.
+
+#### Submit steps (5 minutes)
+
+1. In GSC, confirm the property selector (top-left) shows **`https://webatlas.xyz`** — not `https://www.webatlas.xyz`.
+2. Open **Sitemaps** / **Sitemaps** (left sidebar)
 3. If a previous submission shows **Impossible de récupérer le sitemap** / **Couldn't fetch**, click the ⋮ menu on that row → **Supprimer** / **Delete** (GSC does not always retry failed entries)
 4. In **Ajouter un sitemap** / **Add a new sitemap**, enter only: `sitemap.xml`
 5. Click **Envoyer** / **Submit**
+6. Wait 1–5 minutes; status should change to **Réussite** / **Success**
 
 | Field | Enter this | Do NOT enter |
 |-------|------------|--------------|
@@ -109,7 +122,7 @@ Use the **URL prefix** property `https://webatlas.xyz`, not `www.webatlas.xyz`.
 
 Full resolved URL: `https://webatlas.xyz/sitemap.xml` — no trailing slash.
 
-**Domain property (`sc-domain:webatlas.xyz`):** you may still submit `https://webatlas.xyz/sitemap.xml` in the sitemap field. Prefer URL prefix property for simpler debugging.
+**Optional — Domain property** (`sc-domain:webatlas.xyz`): add via **Ajouter une propriété** → **Domaine** → DNS TXT verify (already present). On domain properties, submit the **full URL** `https://webatlas.xyz/sitemap.xml` in the sitemap field. Prefer URL prefix `https://webatlas.xyz` for simpler debugging unless you need apex + www + http in one property.
 
 ### 4. Request indexing for key pages (optional)
 
@@ -129,24 +142,41 @@ Priority URLs to inspect after first deploy:
 
 In Cloudflare dashboard for `webatlas.xyz`:
 
-#### A. Bot Fight Mode (most common GSC sitemap failure)
+#### A. Bot Fight Mode — keep ON, allow Googlebot (recommended)
 
-1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com)
-2. Select zone **webatlas.xyz**
-3. Go to **Security** → **Bots**
-4. Find **Bot Fight Mode** — if **ON**, turn it **OFF** for this static marketing site
-5. If you use **Super Bot Fight Mode** (Pro+), ensure **Verified bots** (Googlebot) are set to **Allow** — not Challenge or Block
-6. Save
+**Do not turn Bot Fight Mode off globally.** GSC failures happen when real Google crawler IPs get challenged while a fake `Googlebot` curl UA still returns `200`.
 
-> Spoofing `Googlebot` in curl proves your browser path works. GSC uses **real Google crawler IPs**. Bot Fight Mode often blocks those while curl with a fake UA still returns 200.
+Dashboard (French UI labels in *italics*):
 
-#### B. Security level and challenges
+1. [Cloudflare Dashboard](https://dash.cloudflare.com) → zone **webatlas.xyz**
+2. **Sécurité** → **Bots**
+3. Leave **Mode de combat contre les bots** / **Bot Fight Mode** **Activé** / **ON**
+4. If you have **Super Bot Fight Mode** (Pro+): set **Bots vérifiés** / **Verified bots** → **Autoriser** / **Allow** (not *Défi* / Challenge, not *Bloquer* / Block)
+5. **Enregistrer** / **Save**
 
-1. **Security** → **Settings** → set **Security Level** to **Essentially Off** or **Low** (temporarily while testing GSC)
-2. Or **Rules** → **Configuration Rules** → **Create rule**:
-   - **Name:** `Allow crawlers SEO files`
-   - **When:** URI Path equals `/sitemap.xml` OR URI Path equals `/robots.txt`
-   - **Then:** Security Level → Essentially Off
+> Verified bots uses Cloudflare's bot signature database. Googlebot is verified — this is the primary fix while keeping bot security on.
+
+#### B. Configuration Rule — bypass challenges on SEO paths only
+
+Add a path-scoped rule so `/sitemap.xml` and `/robots.txt` never get challenged even if other settings are aggressive:
+
+1. **Règles** → **Règles de configuration** → **Créer une règle** / **Create rule**
+2. **Nom de la règle:** `SEO crawlers — sitemap robots`
+3. **Quand les requêtes correspondent…** / **When incoming requests match…**
+   - Field **Chemin de l'URI** / **URI Path** → **égal à** / **equals** → `/sitemap.xml`
+   - Click **Ou** / **Or**
+   - Field **Chemin de l'URI** → **égal à** → `/robots.txt`
+4. **Alors…** / **Then…** → **Niveau de sécurité** / **Security Level** → **Essentiellement désactivé** / **Essentially Off**
+5. **Déployer** / **Deploy**
+
+This does **not** disable Bot Fight Mode site-wide — only these two paths skip edge challenges.
+
+**Optional WAF rule** (if Configuration Rule is not enough on your plan):
+
+1. **Sécurité** → **WAF** → **Règles personnalisées** → **Créer une règle**
+2. **Nom:** `Skip bot fight — verified bots on SEO paths`
+3. **Expression:** `(http.request.uri.path eq "/sitemap.xml" or http.request.uri.path eq "/robots.txt") and cf.bot_management.verified_bot`
+4. **Action:** **Gérer les bots** → **Ignorer** / **Skip** (all remaining bot management actions)
 
 #### C. AI Crawl Control / Managed robots.txt
 
@@ -204,12 +234,12 @@ Expected: `200 OK` on `/sitemap.xml`, `301` → `/sitemap.xml` on `/sitemap.xml/
 
 After a deploy fix, **delete the failed sitemap entry in GSC and re-submit** `sitemap.xml`. Google does not always retry immediately.
 
-**Cloudflare dashboard** (zone `webatlas.xyz`):
+**Cloudflare dashboard** (zone `webatlas.xyz`) — **keep Bot Fight Mode ON**:
 
-1. **Security** → **Bots** → turn **Bot Fight Mode** off, or enable **Allow verified bots** (Googlebot must pass without a JS challenge).
-2. **Security** → **Settings** → set **Security Level** to *Essentially Off* or *Low* for a static marketing site, or add a **Configuration Rule** / **WAF custom rule** to skip challenges when URI Path equals `/sitemap.xml` or `/robots.txt`.
-3. **Security** → **Bots** → if **Managed robots.txt** / **AI Crawl Control** is enabled, it prepends rules to `robots.txt` (visible as `BEGIN Cloudflare Managed content`). This does not block Googlebot from `/sitemap.xml`, but you can disable managed robots if troubleshooting.
-4. **Caching** → **Configuration** → ensure no Page Rule caches an old 404 for `/sitemap.xml`.
+1. **Sécurité** → **Bots** → **Bots vérifiés** → **Autoriser** (see [§5A](#a-bot-fight-mode--keep-on-allow-googlebot-recommended)).
+2. **Règles** → **Règles de configuration** → path bypass for `/sitemap.xml` and `/robots.txt` (see [§5B](#b-configuration-rule--bypass-challenges-on-seo-paths-only)).
+3. **Sécurité** → **Bots** → **AI Crawl Control** / managed `robots.txt` prepends `BEGIN Cloudflare Managed content` — this does **not** block Googlebot from `/sitemap.xml`.
+4. **Mise en cache** → **Configuration** → purge `/sitemap.xml` and `/robots.txt` if a stale 404 was cached.
 
 Repo safeguards: `public/_headers` sets `Content-Type: text/xml` on `/sitemap.xml`, `public/_redirects` 301s `/sitemap.xml/` → `/sitemap.xml`, `public/sitemap.xml` is a static fallback synced at build time, and `app/robots.ts` declares the sitemap URL without a non-standard `Host:` directive (Cloudflare managed robots can mangle it).
 

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Inter, Noto_Naskh_Arabic, Noto_Sans_Arabic } from 'next/font/google'
 import './globals.css'
 import Providers from '@/components/Providers'
 import Header from '@/components/Header'
@@ -15,47 +15,58 @@ const inter = Inter({
   display: 'swap',
 })
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-space-grotesk',
+const notoNaskh = Noto_Naskh_Arabic({
+  subsets: ['arabic'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-arabic-display',
+  display: 'swap',
+})
+
+const notoSansArabic = Noto_Sans_Arabic({
+  subsets: ['arabic'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-arabic-sans',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
   title: {
-    default: 'WebAtlas — Functional Web Studio | Casablanca',
+    default: 'WebAtlas — مواقع تجيب عملاء | الإمارات والخليج',
     template: '%s | WebAtlas',
   },
   description: SITE.description,
   keywords: [
-    'web agency Casablanca', 'agence web Maroc', 'création site web Casablanca',
-    'site web prise de rendez-vous Maroc', 'booking engine website',
-    'lead generation website Morocco', 'client portal development',
-    'B2B catalog website', 'riad direct booking Marrakech',
-    'multilingual website Morocco', 'web studio Casablanca', 'webatlas',
+    'web agency Dubai',
+    'website UAE',
+    'موقع إلكتروني دبي',
+    'تصميم مواقع الإمارات',
+    'Arabic English website Dubai',
+    'WhatsApp business website UAE',
+    'booking website Dubai',
+    'web studio GCC',
+    'webatlas',
   ],
   authors: [{ name: 'WebAtlas', url: SITE.url }],
   creator: 'WebAtlas',
-  // Canonical is set per-page (homepage, about, contact, …) — not here
   other: {
-    'geo.region': 'MA-06',
-    'geo.placename': 'Casablanca',
+    'geo.region': 'AE-DU',
+    'geo.placename': 'Dubai',
     'geo.position': `${SITE.location.latitude};${SITE.location.longitude}`,
     ICBM: `${SITE.location.latitude}, ${SITE.location.longitude}`,
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    alternateLocale: ['fr_FR', 'ar_MA'],
+    locale: 'ar_AE',
+    alternateLocale: ['en_US', 'fr_FR'],
     url: SITE.url,
     siteName: 'WebAtlas',
-    title: 'WebAtlas — Websites That Close Deals',
+    title: 'WebAtlas — مواقع تجيب عملاء',
     description: SITE.tagline,
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'WebAtlas — Functional Web Studio' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'WebAtlas — UAE & GCC web studio' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WebAtlas — Websites That Close Deals',
+    title: 'WebAtlas — Websites That Get Clients',
     description: SITE.tagline,
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
@@ -66,13 +77,18 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#030308',
-  colorScheme: 'dark',
+  themeColor: '#FFFFFF',
+  colorScheme: 'light',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html
+      lang="ar"
+      dir="rtl"
+      suppressHydrationWarning
+      className={`${inter.variable} ${notoNaskh.variable} ${notoSansArabic.variable}`}
+    >
       <body className="font-sans antialiased bg-bg text-wa-ink">
         <Providers>
           <GlobalJsonLd />

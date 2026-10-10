@@ -1,51 +1,32 @@
 # WebAtlas
 
-> WebAtlas is a functional web studio in Casablanca, Morocco. We build custom business websites — booking engines, lead capture systems, client portals, B2B catalogs, and direct reservation flows — delivered in 10 days with fixed pricing from $800. English, French, and Arabic supported.
+> WebAtlas builds premium Arabic + English websites for UAE and GCC businesses — WhatsApp leads, booking, and a professional presence that gets clients. Clear AED packages. Delivery in about 10 days.
 
-- Location: Casablanca, Morocco (global remote delivery)
-- Contact: hello@webatlas.xyz
-- Pricing: Fixed project quotes from $800 to $2,800 (no hourly billing)
-- Delivery: Live preview by day 3, production launch by day 10
-- Markets: Morocco, France, Belgium, UK, Qatar, UAE, Senegal, Switzerland, Singapore, Canada
+- Focus markets: Dubai, Abu Dhabi, Sharjah, wider GCC
+- Contact email: autopilot.ai6@outlook.com
+- WhatsApp: +212773477231
+- Pricing: packages typically AED 4,500–12,000 (fixed quotes)
+- Delivery: about 10 days after scope agreement
+- Languages: Arabic (RTL) + English
 
 ## Key Pages
 
-- [Homepage](https://webatlas.xyz/): Studio overview, capabilities, pricing tiers, process, FAQ, and contact CTA
-- [Services](https://webatlas.xyz/services): Full service catalog with pricing, deliverables, and per-offering detail pages
-- [Process](https://webatlas.xyz/process): 10-day delivery workflow from free audit to launch
-- [About](https://webatlas.xyz/about): Team story, values, markets served, and credentials
-- [Contact](https://webatlas.xyz/contact): WhatsApp and email — free site audit included
-- [Blog](https://webatlas.xyz/blog): Practical guides on booking sites, riad direct booking, and web agency pricing
-- [Insights](https://webatlas.xyz/insights): Case patterns, market research, and strategic guides
+- [Homepage](https://webatlas.xyz/): Positioning, packages, process, studio visuals, FAQ, WhatsApp CTA
+- [Services](https://webatlas.xyz/services): Lead sites, booking, premium presence, custom builds
+- [Process](https://webatlas.xyz/process): Discovery → design → build → launch
+- [About](https://webatlas.xyz/about): Studio story and markets
+- [Contact](https://webatlas.xyz/contact): WhatsApp and form
+- [Blog](https://webatlas.xyz/blog): Guides for Gulf business websites
+- [Insights](https://webatlas.xyz/insights): Patterns and outcomes
 
-## Services
+## Studio visuals (SEO)
 
-- [Custom Web Applications](https://webatlas.xyz/services#custom): Tailored web apps for any business workflow
-- [Booking Engine](https://webatlas.xyz/services#booking): Online appointment systems for clinics, salons, consultants ($1,200–$2,200)
-- [Lead Capture Site](https://webatlas.xyz/services#leadgen): Conversion-optimized sites for real estate, contractors, advisors ($800–$1,400)
-- [Client Portal](https://webatlas.xyz/services#portal): Secure document and project hubs for professional firms ($1,500–$2,800)
-- [B2B Product Catalog](https://webatlas.xyz/services#catalog): Searchable catalogs with RFQ for manufacturers and exporters ($1,100–$2,000)
-- [Direct Reservation System](https://webatlas.xyz/services#reservation): Bypass OTA commissions for riads, restaurants, tour operators ($900–$1,800)
-- [Multilingual Trust Site](https://webatlas.xyz/services#multilang): French, English, Arabic with hreflang SEO and RTL support ($1,000–$2,000)
-- [AI-Enhanced Builds](https://webatlas.xyz/services#ai): AI-assisted development for faster delivery
-
-## Blog
-
-- [Why Moroccan Clinics Lose Patients Without Online Booking](https://webatlas.xyz/blog/booking-website-morocco-clinics): Booking systems for clinics in Casablanca, Rabat, and Marrakech
-- [How Riads Cut OTA Commissions with Direct Booking](https://webatlas.xyz/blog/riad-direct-booking-marrakech): Direct reservation engines for Marrakech hospitality
-- [Web Agency vs Freelancer in Casablanca](https://webatlas.xyz/blog/web-agency-casablanca-vs-freelancer): How established SMBs should evaluate web partners
-- [Multilingual Websites for Moroccan Exporters](https://webatlas.xyz/blog/multilingual-website-morocco-export): French, English, Arabic with hreflang and RTL
-- [How Much Does a Business Website Cost in Morocco 2026](https://webatlas.xyz/blog/website-cost-morocco-2026): Transparent pricing ranges for lead, booking, and portal sites
+- /showcase/global-scale.png — bilingual global delivery
+- /showcase/ten-day-deploys.jpg — ~10-day launch process
+- /showcase/enterprise-precision.jpg — enterprise-grade builds
+- /showcase/web-architecture.jpg — custom architecture & portals
 
 ## Contact
 
-- [Contact page](https://webatlas.xyz/contact): Message WebAtlas on WhatsApp — response within 4 hours
-- [Email](mailto:hello@webatlas.xyz): hello@webatlas.xyz
-
-## Optional
-
-- [Capabilities & pricing](https://webatlas.xyz/#capabilities): Homepage section with deliverables and investment tiers
-- [FAQ](https://webatlas.xyz/#faq): Answers on pricing, timeline, preview-first process, and international delivery
-- [Products showcase](https://webatlas.xyz/#products): Interactive previews of booking, lead, and portal interfaces
-- [Sitemap](https://webatlas.xyz/sitemap.xml): Machine-readable index of all public URLs
-- [robots.txt](https://webatlas.xyz/robots.txt): Crawler access policy (all major bots allowed)
+- WhatsApp: https://wa.me/212773477231
+- Email: autopilot.ai6@outlook.com

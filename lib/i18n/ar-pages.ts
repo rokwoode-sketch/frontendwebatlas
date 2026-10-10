@@ -166,7 +166,7 @@ const arPages: Pick<
     ],
     casesTitle: 'نتائج موثقة',
     caseStudies: [
-      { id: 'nodenscare', name: 'NodensCare للسياحة العلاجية — إسطنبول', description: 'نقل WebAtlas NodensCare من Wix إلى منصة Cloudflare متعددة اللغات مع أدلة إجراءات ومعرض مرضى وcapture leads عبر واتساب.', result: '4 لغات · 20+ صفحة SEO · <2 ث', industry: 'سياحة علاجية' },
+      { id: 'clinic-dubai', name: 'حضور عيادة — دبي', description: 'موقع عيادة ثنائي اللغة مع واتساب ومسار مواعيد بدل رسائل إنستغرام.', result: 'مسار حجز أوضح · عربي+إنجليزي', industry: 'صحة' },
       { id: 'riad-marrakech', name: 'رياض بوتيك — مدينة مراكش', description: 'حجز مباشر مع Stripe خفّض اعتماد المنصات من 82٪ إلى 61٪.', result: '2,800 $/شهر عمولات موفرة', industry: 'ضيافة' },
       { id: 'export-tangier', name: 'مصنع B2B — طنجة', description: 'كتالوج ثلاثي اللغات مع RFQ استبدل PDF 47 صفحة.', result: '3 عملاء تصدير في 60 يوماً', industry: 'تصدير B2B' },
       { id: 'clinic-rabat', name: 'عيادة أسنان — الرباط', description: 'موقع جذب عملاء مع حجز خفّض الغياب 58٪.', result: '58٪ غياب أقل', industry: 'صحة' },

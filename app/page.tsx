@@ -4,24 +4,22 @@ import { HomePageJsonLd } from '@/components/JsonLd'
 import { SITE, pageUrl } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'WebAtlas — Booking Systems & Lead Engines | Casablanca Web Studio',
+  title: 'WebAtlas — مواقع تجيب عملاء | الإمارات والخليج',
   description: SITE.description,
   keywords: [
-    'web agency Casablanca',
-    'agence web Maroc',
-    'création site web Casablanca',
-    'booking website Morocco',
-    'site web prise de rendez-vous',
-    'lead generation website',
-    'AI web agency',
-    'riad direct booking website',
-    'B2B catalog website',
-    'client portal development',
+    'web agency Dubai',
+    'website UAE',
+    'موقع إلكتروني دبي',
+    'تصميم مواقع الإمارات',
+    'Arabic English website Dubai',
+    'WhatsApp business website UAE',
+    'booking website Dubai',
+    'web studio GCC',
     'webatlas',
   ],
   alternates: { canonical: pageUrl('/') },
   openGraph: {
-    title: 'WebAtlas — Websites That Close Deals',
+    title: 'WebAtlas — مواقع تجيب عملاء',
     description: SITE.tagline,
     url: pageUrl('/'),
     type: 'website',
@@ -32,11 +30,10 @@ export default function Page() {
   return (
     <>
       <HomePageJsonLd />
-      {/* Crawler-visible entity summary for AEO/GEO */}
       <div className="sr-only seo-hidden">
         <p>
           {SITE.description} Contact: {SITE.email}. Pricing: {SITE.priceRange}.
-          Delivery: 10 days. Markets: {SITE.serviceAreas.join(', ')}.
+          Delivery: ~10 days. Markets: {SITE.serviceAreas.join(', ')}.
         </p>
       </div>
       <HomePage />
