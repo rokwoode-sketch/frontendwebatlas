@@ -1,0 +1,32 @@
+User-Agent: Googlebot
+Allow: /
+Disallow: /_next/
+Disallow: /cdn-cgi/
+
+User-Agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /cdn-cgi/
+
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: ChatGPT-User
+Allow: /
+
+User-Agent: Google-Extended
+Allow: /
+
+User-Agent: anthropic-ai
+Allow: /
+
+User-Agent: ClaudeBot
+Allow: /
+
+User-Agent: PerplexityBot
+Allow: /
+
+User-Agent: Bytespider
+Allow: /
+
+Sitemap: https://webatlas.xyz/sitemap.xml
