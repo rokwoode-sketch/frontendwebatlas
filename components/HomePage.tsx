@@ -10,6 +10,7 @@ import {
 import { Marquee } from '@/components/Marquee'
 import ProductShowcase from '@/components/ProductShowcase'
 import FeaturedCaseStudy from '@/components/FeaturedCaseStudy'
+import ClientProjects from '@/components/ClientProjects'
 import HeroScene from '@/components/HeroScene'
 import HeroBadge from '@/components/HeroBadge'
 import { GlassCard } from '@/components/GlassCard'
@@ -125,6 +126,7 @@ export default function HomePage() {
       </section>
 
       <ProductShowcase />
+      <ClientProjects />
       <FeaturedCaseStudy />
 
       <section className="py-20 depth-section" aria-labelledby="stats-heading">

@@ -493,7 +493,7 @@ const contentEn: Omit<Dictionary, 'lang' | 'dir'> = {
     title: 'Web agency knowledge for',
     titleAccent: 'serious businesses',
     heroBody:
-      'Practical articles on booking systems, hospitality direct reservations, multilingual export sites, and what established SMBs in Morocco should expect from a web partner.',
+      'Practical notes for UAE businesses: WhatsApp conversion, booking paths, bilingual trust, and what to expect from a Gulf-focused web partner.',
   },
   faqs: [
     { q: 'How much does a business website cost in the UAE with WebAtlas?', a: 'Packages typically start around AED 4,500 for a lead-focused bilingual site, AED 6,500–11,000 for premium presence, and AED 7,500–12,000 with booking. Fixed quote after a short call — before any payment.' },

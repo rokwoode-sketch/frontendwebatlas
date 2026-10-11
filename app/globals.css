@@ -938,6 +938,21 @@ html, body {
     background: #FFFFFF;
   }
 
+  .client-feature {
+    background: #FFFFFF;
+  }
+
+  .client-tile {
+    background: #0F172A;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .client-feature .group-hover\:scale-\[1\.03\],
+    .client-tile .group-hover\:scale-\[1\.04\] {
+      transform: none !important;
+    }
+  }
+
   /* ─── Grid background ───────────────────────── */
   .grid-bg {
     background-image:
