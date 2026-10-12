@@ -224,17 +224,17 @@ export function buildClientProjectImageSchemas(siteUrl: string, siteName: string
 
 export const CLIENT_PROJECTS_COPY = {
   en: {
-    label: 'Latest work',
-    title: 'Four recent builds',
-    titleAccent: 'worth opening.',
-    body: '',
+    label: 'Our recent clients',
+    title: 'UAE businesses',
+    titleAccent: 'we built for.',
+    body: 'Travel, restaurants, salons, home services, catering, events — the niches that already earn offline and need a site that gets WhatsApp and bookings.',
     outcomeLabel: 'Focus',
   },
   ar: {
-    label: 'أحدث أعمالنا',
-    title: 'أربع مواقع حديثة',
-    titleAccent: 'تستاهل تفتحها.',
-    body: '',
+    label: 'عملاؤنا الأخيرون',
+    title: 'بزنس إماراتي',
+    titleAccent: 'بنينا له.',
+    body: 'سفر، مطاعم، صالونات، خدمات منزلية، تموين، فعاليات — قطاعات تكسب أوفلاين وتحتاج موقع يجيّب واتساب وحجوزات.',
     outcomeLabel: 'التركيز',
   },
 }

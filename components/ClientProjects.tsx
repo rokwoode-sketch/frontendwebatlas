@@ -5,9 +5,19 @@ import { useLanguage } from '@/lib/i18n/LanguageProvider'
 import { CLIENT_PROJECTS, CLIENT_PROJECTS_COPY } from '@/lib/clientProjects'
 import { WHATSAPP_NUMBER, buildWaUrl } from '@/lib/whatsapp'
 
-/** Curated latest works — 4 max, editorial order */
-const LATEST_IDS = ['arabian-odyssey', 'bait-al-joud', 'vanguard', 'lamar-salon'] as const
-const LATEST = LATEST_IDS.map((id) => CLIENT_PROJECTS.find((p) => p.id === id)!).filter(Boolean)
+/** All UAE ICP mockups — editorial order, not a random dump */
+const SHOWCASE_IDS = [
+  'arabian-odyssey',
+  'bait-al-joud',
+  'vanguard',
+  'lamar-salon',
+  'noor-electric',
+  'al-diyafa',
+  'al-safar',
+  'express-electrician',
+] as const
+
+const SHOWCASE = SHOWCASE_IDS.map((id) => CLIENT_PROJECTS.find((p) => p.id === id)!).filter(Boolean)
 
 function Arrow() {
   return (
@@ -24,14 +34,14 @@ export default function ClientProjects() {
   const waUrl = buildWaUrl(
     WHATSAPP_NUMBER,
     isAr
-      ? 'هلا WebAtlas — شفت أحدث أعمالكم وأبغى نفس المستوى لبزنسي.'
-      : 'Hi WebAtlas — I saw your latest work and want the same level for my business.',
+      ? 'هلا WebAtlas — شفت مواقع عملائكم في الإمارات وأبغى نفس المستوى لبزنسي.'
+      : 'Hi WebAtlas — I saw your UAE client sites and want the same level for my business.',
   )
 
-  const lead = LATEST[0]
-  const rest = LATEST.slice(1)
+  const lead = SHOWCASE[0]
+  const rest = SHOWCASE.slice(1)
 
-  const meta = (p: (typeof LATEST)[0]) => ({
+  const meta = (p: (typeof SHOWCASE)[0]) => ({
     niche: isAr ? p.nicheAr : p.nicheEn,
     client: isAr ? p.clientAr : p.clientEn,
     city: isAr ? p.cityAr : p.cityEn,
@@ -65,6 +75,11 @@ export default function ClientProjects() {
               {copy.title}{' '}
               <span className="text-wa-ink-2">{copy.titleAccent}</span>
             </h2>
+            {copy.body ? (
+              <p className="mt-3 text-sm md:text-base text-wa-ink-2 leading-relaxed max-w-lg">
+                {copy.body}
+              </p>
+            ) : null}
           </div>
           <a
             href={waUrl}
@@ -72,7 +87,7 @@ export default function ClientProjects() {
             rel="noopener noreferrer"
             className="btn-whatsapp text-sm shrink-0 self-start md:self-auto"
           >
-            {isAr ? 'أبي نفس المستوى' : 'I want this level'} <Arrow />
+            {isAr ? 'أبي موقع زي هذي' : 'I want a site like these'} <Arrow />
           </a>
         </div>
 
@@ -109,7 +124,7 @@ export default function ClientProjects() {
           </div>
         </article>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 list-none p-0 m-0">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 list-none p-0 m-0">
           {rest.map((project) => {
             const m = meta(project)
             return (
@@ -121,7 +136,7 @@ export default function ClientProjects() {
                       alt={m.alt}
                       fill
                       className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                      sizes="(max-width: 640px) 100vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
                   <figcaption
@@ -134,6 +149,7 @@ export default function ClientProjects() {
                     </p>
                     <h3 className="font-display font-semibold text-base text-wa-ink">{m.client}</h3>
                     <p className="text-sm text-wa-ink-2 leading-snug">{m.headline}</p>
+                    <p className="text-xs text-wa-ink-3 mt-auto pt-1">{m.city}</p>
                   </figcaption>
                 </figure>
               </li>
