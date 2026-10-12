@@ -4,7 +4,7 @@ export const SITE = {
   name: 'WebAtlas',
   legalName: 'WebAtlas',
   url: 'https://webatlas.xyz',
-  email: 'autopilot.ai6@outlook.com',
+  email: 'hello@webatlas.xyz',
   locale: 'ar_AE',
   languages: ['ar', 'en', 'fr'],
   description:

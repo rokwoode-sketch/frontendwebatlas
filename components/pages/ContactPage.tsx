@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { buildWaUrl, WHATSAPP_NUMBER } from '@/lib/whatsapp'
 import PageMeta from '@/components/PageMeta'
+import { SITE } from '@/lib/seo'
 import { useLanguage } from '@/lib/i18n/LanguageProvider'
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -90,7 +91,8 @@ export default function ContactPageClient() {
                 <WhatsAppIcon size={14} />
                 WhatsApp: {WHATSAPP_NUMBER}
               </a>
-              <span className="text-sm text-wa-ink-2 select-all">autopilot.ai6@outlook.com</span>
+              {/* Plain text — no mailto (Cloudflare email-protection creates /cdn-cgi/ 404s) */}
+              <span className="text-sm text-wa-ink-2 select-all">{SITE.email}</span>
               <p className="text-wa-ink-3 text-xs">{t.footer.location}</p>
               <p className="text-wa-ink-3 text-xs">{c.hours}</p>
             </div>
