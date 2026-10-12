@@ -14,11 +14,9 @@ export default function Header() {
   const waUrl = buildWaUrl(WHATSAPP_NUMBER, t.wa.defaultMessage)
 
   const NAV_LINKS = [
-    { href: '/#products', label: t.nav.products },
-    { href: '/services', label: t.nav.services },
-    { href: '/process', label: t.nav.process },
-    { href: '/blog', label: t.nav.blog },
-    { href: '/insights', label: t.nav.insights },
+    { href: '/#client-projects', label: t.nav.products },
+    { href: '/#pricing', label: t.nav.services },
+    { href: '/#process', label: t.nav.process },
     { href: '/about', label: t.nav.about },
     { href: '/contact', label: t.nav.contact },
   ]
@@ -51,7 +49,7 @@ export default function Header() {
 
         <div className={`hidden md:flex items-center gap-3 ${dir === 'rtl' ? 'flex-row-reverse' : ''}`}>
           <LanguageSwitcher />
-          <a href={waUrl} target="_blank" rel="noopener noreferrer" className="btn-primary text-sm">
+          <a href={waUrl} target="_blank" rel="noopener noreferrer" className="btn-whatsapp text-sm">
             {t.nav.cta}
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

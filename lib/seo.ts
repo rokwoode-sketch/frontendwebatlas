@@ -82,7 +82,7 @@ export type ServiceItem = {
 export const FAQS: FaqItem[] = [
   {
     q: 'How much does a business website cost in the UAE with WebAtlas?',
-    a: 'Clear packages typically start around AED 4,500 for a lead-focused bilingual site, AED 6,500–11,000 for a premium presence build, and AED 7,500–12,000 when online booking is included. You get a fixed quote after a short call — before any payment.',
+    a: 'Three clear packages: Website + 1 year hosting from AED 3,900; Website + SEO + hosting AED 5,900; Premium Arabic + English AED 8,900. Fixed details after a short WhatsApp — before any payment.',
   },
   {
     q: 'How long does WebAtlas take to deliver a website?',

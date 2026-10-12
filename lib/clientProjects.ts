@@ -117,8 +117,8 @@ export const CLIENT_PROJECTS: ClientProject[] = [
     nicheAr: 'ضيافة',
     clientEn: 'Bait Al Joud',
     clientAr: 'بيت الجود',
-    cityEn: 'Abu Dhabi',
-    cityAr: 'أبوظبي',
+    cityEn: 'Dubai',
+    cityAr: 'دبي',
     headlineEn: 'Emirati hospitality online — reserve, don’t scroll forever.',
     headlineAr: 'ضيافة إماراتية أونلاين — احجز بدل ما تتصفح بلا نهاية.',
     bodyEn:
@@ -131,6 +131,28 @@ export const CLIENT_PROJECTS: ClientProject[] = [
       'Bait Al Joud restaurant website — luxury Emirati dining homepage with table booking and Arabic menu',
     altAr:
       'موقع بيت الجود — مطعم إماراتي فاخر مع حجز طاولة وقائمة عربية',
+  },
+  {
+    id: 'lamar-salon',
+    src: '/showcase/clients/lamar-salon.jpg',
+    nicheEn: 'Beauty & salon',
+    nicheAr: 'جمال وصالون',
+    clientEn: 'Lamar Salon',
+    clientAr: 'صالون لمار',
+    cityEn: 'Dubai',
+    cityAr: 'دبي',
+    headlineEn: 'Bridal & hair booking without the WhatsApp chaos.',
+    headlineAr: 'حجز عرايس وشعر بدون فوضى واتساب.',
+    bodyEn:
+      'A Dubai salon needed elegance that converts. Cream-and-gold presence, clear service gallery, and an appointment CTA guests actually use.',
+    bodyAr:
+      'صالون في دبي يحتاج أناقة تحوّل. حضور كريمي وذهبي، معرض خدمات واضح، وزر موعد تستخدمه العميلات فعلاً.',
+    outcomeEn: 'Appointment path + bridal packages',
+    outcomeAr: 'مسار مواعيد + باقات عرايس',
+    altEn:
+      'Lamar Salon Dubai website — Arabic beauty salon homepage with appointment booking and bridal packages',
+    altAr:
+      'موقع صالون لمار دبي — صالون تجميل بالعربي مع حجز موعد وباقات عرايس',
   },
   {
     id: 'al-diyafa',
@@ -202,17 +224,17 @@ export function buildClientProjectImageSchemas(siteUrl: string, siteName: string
 
 export const CLIENT_PROJECTS_COPY = {
   en: {
-    label: 'Client projects',
-    title: 'Built for Gulf businesses',
-    titleAccent: 'that already earn offline',
-    body: 'A sample of the verticals we ship for — travel, home services, events, dining, and catering. Real niches. Clear conversion paths.',
+    label: 'Latest work',
+    title: 'Four recent builds',
+    titleAccent: 'worth opening.',
+    body: '',
     outcomeLabel: 'Focus',
   },
   ar: {
-    label: 'مشاريع عملاء',
-    title: 'مبني لبزنس خليجي',
-    titleAccent: 'يكسب أوفلاين',
-    body: 'عيّنة من القطاعات اللي نبني لها — سفر، خدمات منزلية، فعاليات، مطاعم، وتموين. نيش حقيقي ومسار تحويل واضح.',
+    label: 'أحدث أعمالنا',
+    title: 'أربع مواقع حديثة',
+    titleAccent: 'تستاهل تفتحها.',
+    body: '',
     outcomeLabel: 'التركيز',
   },
 }
